@@ -278,6 +278,15 @@ ul li::before {
     transition: all 0.3s ease-in-out;
 }
 
+#send-btn{
+
+    background: #14213D;
+    margin-left: 120px;
+    float: none;
+    bottom: 50px;
+    transition: all 0.3s ease-in-out;
+}
+
 .hoover {
 
     background: #fff;
@@ -616,11 +625,71 @@ select[multiple]{
     transition: all 0.3s ease-in-out;
 }
 
-.upload-btn-hover{
+#drop-zone {
+    /*Sort of important*/
+    width: 300px;
+    /*Sort of important*/
+    height: 200px;
+    position:absolute;
+    left:50%;
+    top:10px;
+    margin-left:-150px;
+    border: 2px dashed rgba(0,0,0,.3);
+    border-radius: 20px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    position: relative;
+    line-height: 180px;
+    font-size: 20px;
+    color: rgba(0,0,0,.3);
+}
 
-    background: #fff;
-    color: #4a86fa;
-    border: #4a86fa 2px solid;
+    #drop-zone input {
+        /*Important*/
+        position: absolute;
+        /*Important*/
+        cursor: pointer;
+        left: 0px;
+        top: 0px;
+        opacity:0;
+        /*Important This is only comment out for demonstration purposes.
+        opacity:0; */
+    }
+
+    /*Important*/
+    #drop-zone.mouse-over {
+        border: 2px dashed rgba(0,0,0,.5);
+        color: rgba(0,0,0,.5);
+    }
+
+
+/*If you dont want the button*/
+#clickHere {
+    position: absolute;
+    cursor: pointer;
+    left: 25%;
+    top: 50%;
+    margin-left: -25px;
+    margin-top: 40px;
+    line-height: 0px;
+    color: white;
+    font-size: 12px;
+    width: 200px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #4a86fa;
+    border: 2px solid #4a86fa;
     transition: all 0.3s ease-in-out;
 
+}
+
+    #clickHere:hover {
+        background-color: #ffffff;
+        color: #4a86fa;
+        border: 2px solid #4a86fa;
+        transition: all 0.3s ease-in-out;
+    }
+
+#bottom-text{
+    float:right;
 }

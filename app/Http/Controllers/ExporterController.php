@@ -23,7 +23,8 @@ class ExporterController extends Controller
             $userTranslation = new UserTranslation();
             $userTranslation->user_id=auth()->user()->id;
             $userTranslation->articulate_file=$fileName;
-            $userTranslation->translation_name=request()->get("translation_name");
+            //$userTranslation->translation_name=request()->get("translation_name");
+            $userTranslation->translation_name="proba";
             $userTranslation->save();
             //dd($userTranslation, auth()->user());
             // create reader object and read the file

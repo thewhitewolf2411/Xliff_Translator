@@ -3,7 +3,7 @@
 
     <head>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet" href="{{ asset('css/signup.css') }}" />
         <title>Index</title>
     </head>
@@ -68,6 +68,7 @@
             </ul> 
         </div>
 
+    @if(!Auth::user())
     <div id="action-div">
         <div id="button-cont">
         
@@ -203,6 +204,9 @@
                     </form>
         </div>
     </div>
+    @else
+
+    @endif    
 
 </div>
 
@@ -242,6 +246,7 @@
         <img id="white-background" src="{{ asset('ass/light-blue-bg.svg') }}" >
     </div>
 
+    @if(!Auth::user())
     <div id="demo-container">
     
         <div id="left-half">
@@ -283,6 +288,69 @@
         </div>
 
     </div>
+    @else
+    <div id="demo-container">
+    
+        <div id="left-half">
+        <form action="/interface/exporter" method="post" enctype="multipart/form-data">
+            @csrf
+            <div id="step-one">
+                <h4 class="step-header">Step 1:</h4>
+                <p class="step-text">Upload your original XLIFF file exported from Articulate. Make sure the you exported correct XLIFF format according the video instructions above.</p>
+                <div id="drop-zone">
+                    <p>Drop file here</p>
+                    <div id="clickHere">
+                        <p>Upload XLIFF<p>
+                        <input type="file" name="file" id="file" accept=".xlf" required />
+                    </div>
+                </div>
+            </div>
+            <div id="step-two">
+                <h4 class="step-header">Step 2:</h4>
+                <p class="step-text">Choose languages on which you want to translate your project and click "Send". After that the Excel file will be downloaded and there you should copy-paste translated text. </p>
+                <select id="multiselect" name="languages[]" size="11" multiple required>
+                    <option class="msvalue" value="en">English</option>
+                    <option class="msvalue" value="de">German</option>
+                    <option class="msvalue" value="it">Italian</option>
+                    <option class="msvalue" value="fr">French</option>
+                    <option class="msvalue" value="es">Spanish</option>
+                    <option class="msvalue" value="cs">Czech</option>
+                    <option class="msvalue" value="zh">Chinese</option>
+                    <option class="msvalue" value="pt">Portugal</option>
+                    <option class="msvalue" value="pl">Poland</option>
+                    <option class="msvalue" value="ru">Russian</option>
+                    <option class="msvalue" value="nl">Netherlands</option>
+                </select>
+                <input type="submit" id="send-btn" class="submit" value="Send"/>
+            </div>
+        </form>
+        </div>
+
+        <div id="right-half">
+        <form action="/convertor" method="post" enctype="multipart/form-data">
+        @csrf
+            <div id="step-three">
+                <h4 class="step-header">Step 3:</h4>
+                <p class="step-text">Upload your updated Excel file so our App can generate translated XLIFF files in all languages you selected. </p> <br>
+                <div id="drop-zone">
+                    <p>Drop file here</p>
+                    <div id="clickHere">
+                        <p>Upload XLS<p>
+                        <input type="file" name="file" id="file" accept=".xlf" required />
+                    </div>
+                </div>
+                <input type="submit" id="send-btn" class="submit" value="Download"/>
+                </form>
+            </div>
+            <div id="step-four">
+                <h4 class="step-header">Step 4:</h4>
+                <p class="step-text">Now, you can insert translated XLIFF files to your Articulate project and all texts should be translated to desired language. </p>
+                <p class="step-text">Your files are being processed. The download link will be sent to your email...</p>
+            </div>
+        </div>
+        <p id="bottom-text">If you face any issue with our xls2xlf converter, feel free to write us on hello@smartlab.ba and we will answer to you as soon  as possible. </p>
+    </div>
+    @endif
 
     <div id="footer">
     
