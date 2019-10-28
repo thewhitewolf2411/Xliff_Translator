@@ -4,6 +4,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{ asset('css/signup_v2.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/menu.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/footer.css') }}" />
@@ -20,10 +21,12 @@
     </style>
 
     <body>
-
+    <div id="image-container">
+        <img class="backgroundsvg" src="{{ asset('ass/new_ass/SmartLab-Webshape01.svg') }}" >
+    </div>
     <header id="head">
     
-        <img id="backgroundsvg" src="{{ asset('ass/top-bg.svg') }}" >
+       
         <div id="text">
         
             <p id="contact-top">Call: </p> <p id="contact-top">+387 61 811 394</p> <p id="contact-top">+387 33 956 222 </p> <p id="contact-top"> Language: </p>
@@ -38,14 +41,13 @@
 
             </form>
         </div>
-        
+    </header> 
     
-    </header>
-
     <div id="meni-div">
 
         <div id="meni-text">
             <p id="xls-title"><strong>xls2xlf</strong></p>
+            <img id="logosvg" src="{{ asset('ass/smartlab-logo.svg') }}" >
             <div class="nav-button-inner" id="nav-button-inner"></div>
             <div class="nav-button-inner-before" id="nav-button-inner-before"></div>
             <div class="nav-button-inner-after" id="nav-button-inner-after"></div>
@@ -121,27 +123,29 @@
 
             </div>
         </div>
-        <img id="logosvg" src="{{ asset('ass/smartlab-logo.svg') }}" >
     </div>
 
     <div id="row-div">
-
-        <h2 id="titlediv"><strong>Articulate Storyline <br> automatic text translation.</strong></h2>
-        <p id="subtext-regular"><strong id="subtext-bold">Find out More:</strong> <br><br> Xliff Articulate Translation Tool Tutorial.</p> 
-        <img id="playvideobtn" src= "{{ asset('ass/play-button.svg') }}" onclick="playvideo()">
+        <div id="title-container">
+            <h2 id="titlediv"><strong>Articulate Storyline <br> automatic text translation.</strong></h2>
+            <p id="xls-title">xls2xlf converter</p>
+        </div>
+        <div id="title-div-container">
+            <p id="subtext-regular"><strong id="subtext-bold">Find out More:</strong> <br> Xliff Articulate Translation Tool Tutorial.</p> 
+            <img id="playvideobtn" src= "{{ asset('ass/play-button.svg') }}" onclick="playvideo()">
+        </div>
 
     </div>
-
+       
     <div id="text-sigup">
         <div id="text-content">
-            <h3>xls2xlf converter</h3>
             <p id="text-content-p">If you are working on an Articulate Storyline project which should be translated in different languages, then we have a solution which can do that work for you. We developed an App which can: <br><br> </p>
             <ul id="list-main">
-                <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;<strong>Import your original XLIFF file exported from your Articulate project </strong><br><br> </li>
-                <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;<strong>Generate Excel spreadsheet prepared for inserting translated text </strong><br><br> </li>
-                <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;<strong>Compare original XLIFF will uploaded translations </strong><br><br> </li>
-                <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;<strong>Engaging tools for webinars </strong><br><br> </li>
-                <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;<strong>Provide you translated XLIFF in all languages you need so you can import them in your Articulate file and all texts should be translated in new languages without any format change or design. </strong><br><br> </li>
+                <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;Import your original XLIFF file exported from your Articulate project <br><br> </li>
+                <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;Generate Excel spreadsheet prepared for inserting translated text <br><br> </li>
+                <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;Compare original XLIFF will uploaded translations <br><br> </li>
+                <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;Engaging tools for webinars <br><br> </li>
+                <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;Provide you translated XLIFF in all languages you need so you can import them in your Articulate file and all texts should be translated in new languages without any format change or design. </strong><br><br> </li>
             </ul> 
         </div>
 

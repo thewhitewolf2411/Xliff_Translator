@@ -1,4 +1,4 @@
-:root {
+nav-li-container:root {
 	--shadow-color: rgba(0, 53, 145, 0.15);
 	--button-bg-color: #4885fa;
 	--button-bg-orange: #ff931f;
@@ -94,7 +94,7 @@ a:not([href]):not([tabindex]):hover {
 	z-index: 100;
 	color: white;
 	display: block;
-	padding: 10px 20px 10px 40px;
+	padding: 10px 20px 10px 70px;
 	/*height: 100%;*/
 	width: 100%;
 	text-transform: uppercase;
@@ -442,7 +442,7 @@ a:not([href]):not([tabindex]):hover {
 		flex-direction: column;
 		justify-content: flex-start;
 		position: absolute;
-		top: 55px;
+		top: 0px;
 		width: 100vw;
 		right: 0;
 		background-color: white;
