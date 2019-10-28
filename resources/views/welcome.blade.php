@@ -148,7 +148,7 @@
                 <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;Provide you translated XLIFF in all languages you need so you can import them in your Articulate file and all texts should be translated in new languages without any format change or design. </strong><br><br> </li>
             </ul> 
         </div>
-
+    
     @if(!Auth::user())
     <div id="action-div">
         <div id="button-cont">
@@ -369,8 +369,7 @@
                     </form>
         </div>
     </div>
-    @endif    
-
+    @endif
 </div>
 
    
@@ -378,13 +377,15 @@
     <script type="text/javascript" src="{{ asset('js/signup.js') }}"></script>
 
     <div id="process-container">
-    
+        <div id="image-container-background">
+            <img class="backgroundsvg2" src="{{ asset('ass/new_ass/SmartLab-Webshape02.svg') }}" >
+        </div>
         <div id="process-background">
             <h2 id="titlediv" class="process-title">Process</h2>
-            <div id="img-steps">
-                <img id="steps-img" src="{{ asset('ass/process-icons.svg') }}" >
-            </div>
             <div id="steps-container">
+                <div id="image-container-steps">
+                    <img class="backgroundsvg3" src="{{ asset('ass/process-icons.svg') }}" >
+                </div>
                 <div id="upload" class="process-class">
                     <h3 class="process-steps">Upload your file</h3>
                     <p class="process-text">Upload XLF and select languages for translation</p>
