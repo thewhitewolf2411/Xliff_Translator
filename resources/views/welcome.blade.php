@@ -4,7 +4,9 @@
     <head>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="{{ asset('css/signup.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/signup_v2.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/menu.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/footer.css') }}" />
         <title>Index</title>
     </head>
 
@@ -19,7 +21,7 @@
 
     <body>
 
-    <div id="head">
+    <header id="head">
     
         <img id="backgroundsvg" src="{{ asset('ass/top-bg.svg') }}" >
         <div id="text">
@@ -30,21 +32,96 @@
             @csrf
             @method('PUT')
 
-                <input type="radio" name="language" id="en" value="en" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='en' ) checked @endif><label for="en" @if(App::getlocale()=='en' ) class="language-selected" @endif>@lang('menu.english_language')</label>
-                <input type="radio" name="language" id="de" value="de" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='de' ) checked @endif><label for="de" @if(App::getlocale()=='de' ) class="language-selected" @endif>@lang('menu.german_language')</label>
-                <input type="radio" name="language" id="bs" value="bs" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='bs' ) checked @endif><label for="bs" @if(App::getlocale()=='bs' ) class="language-selected" @endif>@lang('menu.bosnian_language')</label>
+                <input type="radio" class="language" name="language" id="en" value="en" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='en' ) checked @endif><label for="en" @if(App::getlocale()=='en' ) class="language-selected" @endif>@lang('menu.english_language')</label>
+                <input type="radio" class="language" name="language" id="de" value="de" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='de' ) checked @endif><label for="de" @if(App::getlocale()=='de' ) class="language-selected" @endif>@lang('menu.german_language')</label>
+                <input type="radio" class="language" name="language" id="bs" value="bs" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='bs' ) checked @endif><label for="bs" @if(App::getlocale()=='bs' ) class="language-selected" @endif>@lang('menu.bosnian_language')</label>
 
             </form>
         </div>
         
     
-    </div>
+    </header>
 
     <div id="meni-div">
 
-        <p id="xls-title"><strong>xls2xlf</strong></p>
-        <img id="logosvg" src="{{ asset('ass/smartlab-logo.svg') }}" >
+        <div id="meni-text">
+            <p id="xls-title"><strong>xls2xlf</strong></p>
+            <div class="nav-button-inner" id="nav-button-inner"></div>
+            <div class="nav-button-inner-before" id="nav-button-inner-before"></div>
+            <div class="nav-button-inner-after" id="nav-button-inner-after"></div>
+        </div>
+        <div class="nav-li-container" id="nav-li-container">
+            <li class="nav-li nav-li-js arrow first">
+                <a class="grey" id="whatWeDo">@lang('menu.first_item')</a>
+                <div class="filler"></div>
+                <div class="expandable expandable-first">
+                    <a href="{{asset('/pages/courses')}}">@lang('menu.online_courses')</a>
+                    <a href="{{asset('/pages/animations')}}">@lang('menu.educational_video')</a>
+                    <a href="{{asset('/pages/programming')}}">@lang('menu.programming')</a>
+                    <a href="{{asset('/pages/moodle')}}">@lang('menu.moodle')</a>
+                </div>
+            </li>
 
+            <li class="nav-li nav-li-js arrow">
+                <a class="grey">@lang('menu.second_item')</a>
+                <div class="filler"></div>
+                <div class="expandable expandable-second">
+                    <a href="{{asset('/#about')}}" class="same-page-link">@lang('menu.about_us')</a>
+                    <a href="{{asset('/#team')}}" class="same-page-link">@lang('menu.our_team')</a>
+                </div>
+            </li>
+            <li class="nav-li nav-li-js arrow">
+                <a class="grey">@lang('menu.third_item')</a>
+                <div class="filler"></div>
+                <div class="expandable join expandable-third">
+                    <div class="join-left">
+                        <a href="{{asset('/pages/outsourcing')}}">@lang('menu.outsourcing')</a>
+                    </div>
+                    <div class="join-right">
+                        <a href="{{asset('/pages/partner')}}">@lang('menu.become_a_partner')</a>
+                        <a href="{{asset('/pages/careers')}}">@lang('menu.careers')</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-li nav-li-js">
+                <!-- Open link in new tab and set its language depending on the current language in main website -->
+                <a class="padding-right-0 grey" href="{{ env("BLOG_DOMAIN")  }}/@if(App::getlocale()){{App::getlocale()}}@else en @endif" target="_blank" rel="noopener">@lang('menu.fourth_item')</a>
+            </li>
+            <li class="nav-li nav-li-js last same-page-link"><a class="padding-right-0 grey" href="{{asset('/#contact')}}">@lang('menu.fifth_item')</a></li>
+
+            <!-- This menu items are available only to logged in users -->
+            @auth
+
+            <!-- not available for xlf users -->
+            @if(\Illuminate\Support\Facades\Auth::user()->roles_id != 3)
+
+            <li class="nav-li nav-li-js">
+                <a class="grey padding-right-0" href="{{asset('/dashboard')}}">@lang('menu.sixth_item')</a>
+            </li>
+
+            @endif
+
+            <!-- Link for logging out -->
+            <li class="nav-li nav-li-js"><a class="grey padding-right-0" href="{{route('logout')}}">@lang('menu.tenth_item')</a></li>
+
+            @endauth
+            <div class="nav-top-mobile">
+
+                <p><span>Call: </span><span>+387 61 811 394</span> <span class="margin-right">+387 33 956 222</span></p>
+                <form action="/language" method="POST" class="mobile-language-form">
+                    <!-- Form for sending new language after user clicks on one of the select options - page is refreshed with new language translations -->
+                    @csrf
+                    @method('PUT')
+
+                    <input type="radio" name="language" id="en" value="en" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='en' ) checked @endif><label for="en" @if(App::getlocale()=='en' ) class="language-selected" @endif>@lang('menu.english_language')</label>
+                    <input type="radio" name="language" id="de" value="de" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='de' ) checked @endif><label for="de" @if(App::getlocale()=='de' ) class="language-selected" @endif>@lang('menu.german_language')</label>
+                    <input type="radio" name="language" id="bs" value="bs" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='bs' ) checked @endif><label for="bs" @if(App::getlocale()=='bs' ) class="language-selected" @endif>@lang('menu.bosnian_language')</label>
+
+                </form>
+
+            </div>
+        </div>
+        <img id="logosvg" src="{{ asset('ass/smartlab-logo.svg') }}" >
     </div>
 
     <div id="row-div">
@@ -205,7 +282,89 @@
         </div>
     </div>
     @else
+    <div id="action-div">
+        <div id="button-cont">
+        
+            <button id="reg-button" class="switch-button" type="button" onclick="changeDisplayToReg()">Sign up</button>
+            <button id="log-button" class="switch-button active" type="button" onclick="changeDisplayToLog()">Sign in</button>
 
+        </div>
+        <div id="login-page">
+            <h2 class="blue-title">Sign in</h2>
+            <div class="line"></div>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+            <button type="submit">Logout</button>
+
+        </form>
+        </div>
+
+        <div id="registration-page">
+            <h2 class="blue-title">Sign up and have 14 days trial accass.</h2>
+            <div class="line"></div>
+            <form method="POST" action="{{ route('register') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="name" class="text-input col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="input @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name">
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="text-input col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="text-input col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="text-input input @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password-confirm" class="text-input col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="input" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="submit">
+                                    {{ __('Register') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+        </div>
+    </div>
     @endif    
 
 </div>
@@ -339,59 +498,87 @@
                         <input type="file" name="file" id="file" accept=".xlf" required />
                     </div>
                 </div>
-                <input type="submit" id="send-btn" class="submit" value="Download"/>
+                <input type="submit" id="download-btn" class="submit" value="Download"/>
                 </form>
             </div>
             <div id="step-four">
                 <h4 class="step-header">Step 4:</h4>
                 <p class="step-text">Now, you can insert translated XLIFF files to your Articulate project and all texts should be translated to desired language. </p>
-                <p class="step-text">Your files are being processed. The download link will be sent to your email...</p>
             </div>
         </div>
-        <p id="bottom-text">If you face any issue with our xls2xlf converter, feel free to write us on hello@smartlab.ba and we will answer to you as soon  as possible. </p>
     </div>
     @endif
 
-    <div id="footer">
-    
-    <img id="footersvg" src="{{ asset('ass/footer.svg') }}" >
-        <div id="row-one">
-            <div id="col-one">
-                <a class="footer-text" href="https://smartlab.ba/#anchor">What we do</a>
-                <a class="footer-text" href="https://smartlab.ba/#about">Who we are</a>
-                <a class="footer-text" href="https://smartlab.ba/pages/partner">Join us</a>
-                <a class="footer-text" href="https://blog.smartlab.ba/en">Blog</a>
-                <a class="footer-text" href="https://smartlab.ba/#contact">Contact</a>
+    <footer>
+    <!--<img class="footer-background" src="images/footer-dark.svg" />-->
+    <div class="contain">
+        <div class="footer-top-row">
+            <nav class="footer-top-column --left">
+                <ul>
+                    <li><a href="/#anchor">@lang('menu.first_item')</a></li>
+                    <li><a href="/#about">@lang('menu.second_item')</a></li>
+                    <li><a href="{{asset('/pages/partner')}}">@lang('menu.third_item')</a></li> <!-- TODO do we have this page, we need to set link-->
+                    <li><a href="{{env('BLOG_DOMAIN')}}/{{App::getlocale()}}" target="_blank">@lang('menu.fourth_item')</a></li>
+                    <li><a href="/#contact">@lang('menu.fifth_item')</a></li>
+                </ul>
+            </nav>
+            <div class="footer-top-column phone --center">
+                <div>
+                    <img src="{{asset('/ass/footer/social-icons/phone-receiver.svg')}}" />
+                    <div class="footer-phone-container">
+                        <p>
+                            <a href="tel: 00387 61 811 394">+387 61 811 394</a>
+                        </p>
+                        <p>
+                            <a href="tel: 00387 33 956 222">+387 33 956 222</a>
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <img src="{{asset('/ass/footer/social-icons/mail.svg')}}" />
+                    <p>
+                        <a href=" mailto:hello@smartlab.ba">hello@smartlab.ba</a>
+                    </p>
+                </div>
             </div>
-            <div id="col-two">
-                <a class="footer-text" href="tel:00387 61 811 394">+387 61 811 394  </a>
-                <a class="footer-text" href="tel:00387 33 956 222">+387 33 956 222 </a>
-                <br><br><br>
-                <a class="footer-text" href="mailto:hello@smartlab.ba">hello@smartlab.ba </a>
+            <div class="footer-top-column --center nowrap">
+                <img src="{{asset('/ass/footer/social-icons/location.svg ')}}" />
+                <address>
+                    <a href="https://www.google.com/maps/place/SmartLab/@43.8542408,18.3870703,17z/data=!3m1!4b1!4m5!3m4!1s0x4758c8c48c458d13:0xd3b7b0136b05bfe5!8m2!3d43.854237!4d18.389259" target="_blank">
+                        <p>Kolodvorska 5,</p>
+                        <p><span class="wrap">Sarajevo,</span> <span>@lang('footer.state')</span></p>
+                    </a>
+                </address>
             </div>
-            <div id="col-three">
-                <a class="footer-text" href="https://www.google.com/maps/place/SmartLab/@43.8542408,18.3870703,17z/data=!3m1!4b1!4m5!3m4!1s0x4758c8c48c458d13:0xd3b7b0136b05bfe5!8m2!3d43.854237!4d18.389259" target="_blank">Kolodvorska 5, <br>Sarajevo Bosna i Hercegovina </a>
-            </div>
-            <div id="col-four">
-                <button class="find-us">Find us</button>
+            <div class="footer-top-column --right">
+                <button class="footer-button">
+                    <a href="https://www.google.com/maps/place/SmartLab/@43.8542408,18.3870703,17z/data=!3m1!4b1!4m5!3m4!1s0x4758c8c48c458d13:0xd3b7b0136b05bfe5!8m2!3d43.854237!4d18.389259" target="_blank">@lang('footer.findUs')</a>
+                </button>
             </div>
         </div>
-        <div id="row-two">
-            <div id="col-one-two">
-                <img id="smartlab-white" src="{{ asset('ass/smartlab-white.svg') }}" >
-            </div>
-            <div id="col-two-two">
-                <p class="footer-text" id="copyright">Copyright © 2019 SmartLab</p>
-            </div>
-            <div id="col-three-two">
-                <a href="https://www.facebook.com/smartlabsarajevo/"><img class="icons" src="{{ asset('ass/fb-icon.svg') }}"> </a>
-                <a href="https://www.linkedin.com/company/smartlab-sarajevo/"><img class="icons" src="{{ asset('ass/linkedin-icon.svg') }}"> </a>
-                <a href="https://smartlab.ba/#"><img class="icons" src="{{ asset('ass/skype-icon.svg') }}"> </a>
-                <a href="https://smartlab.ba/#"><img class="icons" src="{{ asset('ass/youtube-icon.svg') }}"> </a>
-            </div>
-        </div>
+        <div class="footer-bot-row">
+            <div class="footer-bot-column --left ">
+                <a href="#"><img src="{{asset('/ass/footer/social-icons/smartlab-white.svg')}}" class="footer-bot-icons" /></a>
 
-    </div>
+            </div>
+            <div class="footer-bot-column --center">
+                Copyright &copy; 2019 SmartLab
+            </div>
+            <div class="footer-bot-column --right">
+                <div class="social-icons-container">
+                    <a href="https://www.facebook.com/smartlabsarajevo/" target="_blank"><img src="{{asset('/ass/footer/social-icons/fb-icon.svg')}}" class="footer-bot-icons" /></a>
+                    <a href="https://www.linkedin.com/company/smartlab-sarajevo" target="_blank"><img src="{{asset('/ass/footer/social-icons/linkedin-icon.svg')}}" class=" footer-bot-icons" /></a>
+                    <a href="#" target="_blank">
+                        <img src="{{asset('/ass/footer/social-icons/skype-icon.svg')}}" class="footer-bot-icons" />
+                    </a>
+                    <a href="#" target="_blank">
+                        <img src="{{asset('/ass/footer/social-icons/youtube-icon.svg')}}" class="footer-bot-icons no-right-margin" />
+                    </a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </footer>
 
     </body>
 

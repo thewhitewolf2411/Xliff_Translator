@@ -1,0 +1,87 @@
+body{
+
+    font-family: 'Open Sans', sans-serif;
+    line-height: 3pt;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+
+h1, h2, h3, h4, h5, h6{
+
+    font-family: "Montserrat", sans-serif;
+
+}
+
+p{
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*svg displays set to none */
+#backgroundsvg{
+    display:none;
+}
+
+#playvideobtn{
+    display: none;
+}
+
+#steps-img{
+    display: none;
+}
+
+#white-background{
+    display: none;
+}
+
+#footersvg{
+    display: none;
+}
+
+#smartlab-white{
+    display: none;
+}
+
+header{
+    margin-top: 10px;
+    width: 100%;
+    margin-left: 50%;
+}
+
+#text{
+    display: flex;
+}
+
+#contact-top{
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#languageForm{
+    margin-left: 20px;
+    margin-right: 20px;
+    float: right;
+}
+
+.language{
+    margin-top: 12px;
+}
+
+#meni-div{
+
+    margin-top: 70px;
+    margin-left: 30px;
+    margin-bottom: 0;
+    display: block;
+}
+
+#logosvg{
+    margin-top: 0;
+    width: 200px;
+}
+
+#xls-title{
+    line-height: 0 !important;
+    color: #ffb04e;
+}

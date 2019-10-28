@@ -10,9 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Auth::routes();
-
 Route::get('/', 'InterfaceController@showIndex');
 
 Route::get('/landing', 'InterfaceController@showInterface')->middleware('auth');

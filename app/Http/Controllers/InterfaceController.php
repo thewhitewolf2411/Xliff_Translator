@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class InterfaceController extends Controller
 {
+
     public function showIndex(){
 
         return view('welcome');

@@ -287,6 +287,15 @@ ul li::before {
     transition: all 0.3s ease-in-out;
 }
 
+#send-btn:hover{
+
+    background-color: #fff;
+    color:#14213D;
+    border: 2px solid #14213D;
+    transition: all 0.3s ease-in-out;
+
+}
+
 .hoover {
 
     background: #fff;
@@ -690,6 +699,20 @@ select[multiple]{
         transition: all 0.3s ease-in-out;
     }
 
-#bottom-text{
-    float:right;
+#download-btn{
+
+    margin-left:30%;
+    margin-right: 30%;
+    background-color: #14213D;
+    color: #fff;
+    border: 2px solid #14213D;
+    transition: all 0.3s ease-in-out;
+}
+
+#download-btn:hover{
+
+    background-color: #fff;
+    color:#14213D;
+    border: 2px solid #14213D;
+    transition: all 0.3s ease-in-out;
 }
