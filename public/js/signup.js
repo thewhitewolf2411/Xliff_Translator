@@ -42,35 +42,24 @@ input.focusout(function() {
     $(this).removeClass("input-active");
 });
 
-var sub = $(".submit");
-sub.hover(function(){
-    $(this).addClass("hoover");
-}, function(){
-    $(this).removeClass("hoover");
-});
-
-$(document).ready(function(){
-    
-    $("#upload-btn").hover(function(){
-        $(this).addClass("upload-btn-hover");
-    }, function(){
-        $(this).removeClass("upload-btn-hover");
-    });
-
-})
-
 $(document).ready(function() {
     $('.find-us').click(function(){
         window.open('https://www.google.com/maps/place/SmartLab/@43.8542408,18.3870703,17z/data=!3m1!4b1!4m5!3m4!1s0x4758c8c48c458d13:0xd3b7b0136b05bfe5!8m2!3d43.854237!4d18.389259', '_blank');
     });
+
 });
-$(document).ready(function(){
-    $("#upload-btn").click(function(){
-        $('html, body').animate({
-            scrollTop: $("#log-button").offset().top
-        }, 800);
-    });
-});
+
+
+function mustLogin(){
+
+    document.getElementById("must-login").style.display = "block";
+    document.getElementById("login-email").textContent = "*E-mail Address";
+    document.getElementById("login-email").style.color = "red";
+    document.getElementById("login-password").textContent = "*Password";
+    document.getElementById("login-password").style.color = "red";
+
+}
+
 
 
 window.onmousedown = function (e) {

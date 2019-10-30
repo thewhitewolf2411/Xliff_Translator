@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="{{ asset('css/menu.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/footer.css') }}" />
         <title>Index</title>
+
+
     </head>
 
     <style>
@@ -159,12 +161,13 @@
         </div>
         <div id="login-page">
             <h2 class="blue-title">Sign in</h2>
+            <p id="must-login">You need to log in to use translator</p>
             <div class="line"></div>
             <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="text-input col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" id="login-email" class="text-input col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -178,7 +181,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="text-input col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" id="login-password" class="text-input col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
@@ -289,8 +292,8 @@
     <div id="action-div">
         <div id="button-cont">
         
-            <button id="reg-button" class="switch-button" type="button" onclick="changeDisplayToReg()">Sign up</button>
-            <button id="log-button" class="switch-button active" type="button" onclick="changeDisplayToLog()">Sign in</button>
+            <button id="reg-button-2" class="switch-button" type="button" onclick="changeDisplayToReg()">Sign up</button>
+            <button id="log-button-2" class="switch-button active" type="button" onclick="changeDisplayToLog()">Sign in</button>
 
         </div>
         <div id="login-page">
@@ -376,16 +379,23 @@
 
     <script type="text/javascript" src="{{ asset('js/signup.js') }}"></script>
 
+
     <div id="process-container">
         <div id="image-container-background">
             <img class="backgroundsvg2" src="{{ asset('ass/new_ass/SmartLab-Webshape02.svg') }}" >
         </div>
         <div id="process-background">
             <h2 id="titlediv" class="process-title">Process</h2>
-            <div id="steps-container">
-                <div id="image-container-steps">
-                    <img class="backgroundsvg3" src="{{ asset('ass/process-icons.svg') }}" >
+            <div id="image-container-steps">
+                    <img class="process-images" id="upload-image" src="{{ asset('ass/Steps/icon01.svg') }}">
+                    <img class="process-images" id="dots1" src="{{ asset('ass/Steps/dots01.svg') }}">
+                    <img class="process-images" id="download-image" src="{{ asset('ass/Steps/icon02.svg') }}">
+                    <img class="process-images" id="dots2" src="{{ asset('ass/Steps/dots02.svg') }}">
+                    <img class="process-images" id="translate-image" src="{{ asset('ass/Steps/icon03.svg') }}">
+                    <img class="process-images" id="dots3" src="{{ asset('ass/Steps/dots03.svg') }}">
+                    <img class="process-images" id="ready-image" src="{{ asset('ass/Steps/icon04.svg') }}">
                 </div>
+            <div id="steps-container">
                 <div id="upload" class="process-class">
                     <h3 class="process-steps">Upload your file</h3>
                     <p class="process-text">Upload XLF and select languages for translation</p>
@@ -406,36 +416,43 @@
                     <p class="process-text">The App will created XLIFF files for selected languages and then they are ready for insertion in your Articulate project</p>
                 </div>
             </div>
+            <div id="orange-image-container">
+                    <img id="orange-image-svg" src="{{ asset('ass/new_ass/SmartLab-Webshape04.svg') }}">
+            </div>
         </div>
-        <img id="white-background" src="{{ asset('ass/light-blue-bg.svg') }}" >
     </div>
 
     @if(!Auth::user())
+    <div id="demo-container-background">
+            <img class="demo-image-svg" src="{{ asset('ass/new_ass/SmartLab-Webshape03.svg') }}" >
+    </div>
     <div id="demo-container">
-    
         <div id="left-half">
             <div id="step-one">
                 <h4 class="step-header">Step 1:</h4>
                 <p class="step-text">Upload your original XLIFF file exported from Articulate. Make sure the you exported correct XLIFF format according the video instructions above.</p>
-                <button class="upload-btn" id="upload-btn">Upload XLIFF</button>
+                <a href="#log-button"><button class="upload-btn" id="upload-btn" onclick="mustLogin()">Upload XLIFF</button></a>
             </div>
             <div id="step-two">
                 <h4 class="step-header">Step 2:</h4>
                 <p class="step-text">Choose languages on which you want to translate your project and click "Send". After that the Excel file will be downloaded and there you should copy-paste translated text. </p>
-                <select id="multiselect" name="languages[]" size="11" multiple required>
-                    <option class="msvalue" value="en">English</option>
-                    <option class="msvalue" value="de">German</option>
-                    <option class="msvalue" value="it">Italian</option>
-                    <option class="msvalue" value="fr">French</option>
-                    <option class="msvalue" value="es">Spanish</option>
-                    <option class="msvalue" value="cs">Czech</option>
-                    <option class="msvalue" value="zh">Chinese</option>
-                    <option class="msvalue" value="pt">Portugal</option>
-                    <option class="msvalue" value="pl">Poland</option>
-                    <option class="msvalue" value="ru">Russian</option>
-                    <option class="msvalue" value="nl">Netherlands</option>
-                </select>
-                <button id="send-btn" class="submit" onclick="sendLanguages()">Send</button>
+                <p class="step-text" id="select-language-text">Select languages:</p>
+                <div id="multiselect-container">
+                    <select id="multiselect" name="languages[]" size="11" multiple required>
+                        <option class="msvalue" value="en">English</option>
+                        <option class="msvalue" value="de">German</option>
+                        <option class="msvalue" value="it">Italian</option>
+                        <option class="msvalue" value="fr">French</option>
+                        <option class="msvalue" value="es">Spanish</option>
+                        <option class="msvalue" value="cs">Czech</option>
+                        <option class="msvalue" value="zh">Chinese</option>
+                        <option class="msvalue" value="pt">Portugal</option>
+                        <option class="msvalue" value="pl">Poland</option>
+                        <option class="msvalue" value="ru">Russian</option>
+                        <option class="msvalue" value="nl">Netherlands</option>
+                    </select>
+                    <a href="#log-button"><button id="send-btn" class="submit" onclick="mustLogin()">Send</button></a>
+                </div>
             </div>
         </div>
 
