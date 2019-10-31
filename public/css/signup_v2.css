@@ -55,6 +55,8 @@ header{
     max-width: 1440px;
 }
 
+
+
 #text{
     display: flex;
     justify-content: flex-end;
@@ -72,12 +74,19 @@ header{
     margin-right: 20px;
     float: right;
 }
+#languageForm label{
+    color: #999ca1;
+}
+.language-selected{
+    color: white !important;
+}
 
 .language{
-    opacity: 0;
+    opacity: 1;
     margin-top: 35px;
     font-family: "Montserrat", sans-serif;
 }
+
 
 #meni-div{
 
@@ -125,11 +134,12 @@ header{
     display: flex;
     justify-content: flex-end;
     position: absolute;
-    right: 340px;
+    right: 240px;
+    margin-top: 80px;
 }
 
 #subtext-regular{
-    font-size: 14pt;
+    font-size: 12pt;
     text-align: right;
     margin: auto 0;
 }
@@ -173,8 +183,7 @@ header{
 
 #action-div {
 
-    width: 40%;
-    margin-right: 0;
+    margin-left: 150px;
     z-index: 100;
     
 }
@@ -241,6 +250,14 @@ header{
     font-weight: 500;
 }
 
+#must-register{
+
+    color:red;
+    display: none;
+    font-size: 14pt;
+    font-weight: 500;
+}
+
 #text-content-p{
 
     margin-top: 50px;
@@ -277,7 +294,7 @@ header{
 
 .backgroundsvg2{
 
-    width: 120%;
+    width: 2300px;
     margin-left: -10%;
 
 }
@@ -397,7 +414,7 @@ header{
 
 #demo-container-background{
 
-    margin-top: 100px;
+    margin-top: -200px;
     float:left;
     margin-left: -200px;
     z-index: -50;
@@ -409,14 +426,24 @@ header{
     z-index: -100;
 }
 
+#text-before-steps{
+
+    margin-top: 350px;
+    font-size: 16pt;
+    text-align: center;
+    font-weight: 600;
+
+}
+
 #demo-container{
+    background: white;
     z-index: 50;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     width: 80%;
     max-width: 1440px;
-    margin-top: 300px;
+    margin-top: 100px;
 }
 
 #left-half{
@@ -437,8 +464,9 @@ header{
 
 .step-header{
 
+    margin-top: 80px;
     margin-left: 80px;
-    font-size: 16pt;
+    font-size: 18pt;
     font-family: "Montserrat", sans-serif;
     color: #4885fa;
 
@@ -449,6 +477,13 @@ header{
     margin-left: 80px;
     margin-right: 80px;
     font-size: 12pt;
+}
+
+#download-text{
+
+    color: #4885fa;
+    font-size: 10pt;
+
 }
 
 .upload-btn{
@@ -474,6 +509,34 @@ header{
     border: 2px solid #4a86fa;
     font-weight: 500;
 }
+
+.upload-xls-btn{
+
+    background: #14213D;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14pt;
+    margin-top:10px;
+    margin-left: 80px;
+    border: none;
+    width: 30%;
+    height: 60px;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+    font-weight: 500;
+
+}
+
+.upload-xls-btn:hover{
+
+    background: #fff;
+    color: #14213D;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid #14213D;
+    font-weight: 500;
+
+}
+
 
 #multiselect{
     position: relative;
@@ -516,7 +579,7 @@ select[multiple]{
     float: right;
     margin-top: 120px;
     margin-left: 120px;
-    margin-right: 0;
+    margin-right: 40px;
     transition: all 0.3s ease-in-out;
 }
 

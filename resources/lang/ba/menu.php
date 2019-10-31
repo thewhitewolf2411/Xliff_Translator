@@ -5,9 +5,9 @@ return [
     'english_language' => 'EN',
     'german_language' => 'DE',
     'bosnian_language' => 'BA',
-    'first_item' => 'WHAT WE DO',
-    'second_item' => 'WHO WE ARE',
-    'third_item' => 'JOIN US',
+    'first_item' => 'ŠTA RADIMO',
+    'second_item' => 'KO SMO MI',
+    'third_item' => 'PRIDRUŽITE NAM SE',
     'fourth_item' => 'BLOG',
-    'fifth_item' => 'CONTACT'
+    'fifth_item' => 'KONTAKT'
 ];

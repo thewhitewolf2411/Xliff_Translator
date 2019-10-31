@@ -13,19 +13,20 @@ class InterfaceController extends Controller
 
     }
 
-    public function showInterface(){
+    public function showInterface($lang){
 
         return view('landing');
 
     }
 
-    public function showConvert(){
+    public function showConvert($lang){
 
         return view('interface');
 
     }
 
-    public function showExport(){
+    public function showExport($lang){
+
         return view('interface_export');
     }
 }

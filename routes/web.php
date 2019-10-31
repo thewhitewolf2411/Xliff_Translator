@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::put('language', 'LanguagesController@switchLanguage');
 Auth::routes();
 Route::get('/', 'InterfaceController@showIndex');
 

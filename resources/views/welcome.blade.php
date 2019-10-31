@@ -37,9 +37,9 @@
             @csrf
             @method('PUT')
 
-                <input type="radio" class="language" name="language" id="en" value="en" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='en' ) checked @endif><label for="en" @if(App::getlocale()=='en' ) class="language-selected" @endif>@lang('menu.english_language')</label>
-                <input type="radio" class="language" name="language" id="de" value="de" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='de' ) checked @endif><label for="de" @if(App::getlocale()=='de' ) class="language-selected" @endif>@lang('menu.german_language')</label>
-                <input type="radio" class="language" name="language" id="bs" value="bs" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='bs' ) checked @endif><label for="bs" @if(App::getlocale()=='bs' ) class="language-selected" @endif>@lang('menu.bosnian_language')</label>
+            <input type="radio" class="language" name="language" id="en" value="en" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='en' ) checked @endif><label for="en" @if(App::getlocale()=='en' ) class="language-selected" @endif>@lang('menu.english_language')</label>
+           <input type="radio" class="language" name="language" id="de" value="de" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='de' ) checked @endif><label for="de" @if(App::getlocale()=='de' ) class="language-selected" @endif>@lang('menu.german_language')</label>
+           <input type="radio"  class="language"name="language" id="bs" value="bs" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='bs' ) checked @endif><label for="bs" @if(App::getlocale()=='bs' ) class="language-selected" @endif>@lang('menu.bosnian_language')</label>
 
             </form>
         </div>
@@ -224,6 +224,7 @@
 
         <div id="registration-page">
             <h2 class="blue-title">Sign up and have 14 days trial accass.</h2>
+            <p id="must-register">You need to register to use translator</p>
             <div class="line"></div>
             <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -423,6 +424,7 @@
     </div>
 
     @if(!Auth::user())
+    <p id="text-before-steps">Try uploading your own file:</p>
     <div id="demo-container-background">
             <img class="demo-image-svg" src="{{ asset('ass/new_ass/SmartLab-Webshape03.svg') }}" >
     </div>
@@ -459,12 +461,13 @@
         <div id="right-half">
             <div id="step-three">
                 <h4 class="step-header">Step 3:</h4>
-                <p class="step-text">Upload your updated Excel file so our App can generate translated XLIFF files in all languages you selected. </p>
+                <p class="step-text">Upload your updated Excel file so our App can generate translated XLIFF files in all languages you selected. <br><br></p>
+                <a href="#log-button"><button class="upload-xls-btn" id="upload-xls-btn" onclick="mustLogin()">Upload XLS</button></a>
             </div>
             <div id="step-four">
                 <h4 class="step-header">Step 4:</h4>
-                <p class="step-text">Now, you can insert translated XLIFF files to your Articulate project and all texts should be translated to desired language. </p>
-            
+                <p class="step-text">Now, you can insert translated XLIFF files to your Articulate project and all texts should be translated to desired language. <br><br></p>
+                <p class="step-text" id="download-text">Your files are being processed. The download link will be sent to your email...<br><br></p>
             </div>
         </div>
 

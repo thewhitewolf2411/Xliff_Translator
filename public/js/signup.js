@@ -53,6 +53,7 @@ $(document).ready(function() {
 function mustLogin(){
 
     document.getElementById("must-login").style.display = "block";
+    document.getElementById("must-register").style.display = "block";
     document.getElementById("login-email").textContent = "*E-mail Address";
     document.getElementById("login-email").style.color = "red";
     document.getElementById("login-password").textContent = "*Password";
@@ -60,7 +61,9 @@ function mustLogin(){
 
 }
 
-
+function changeSiteLanguage(value) {
+    document.getElementById('languageForm').submit();
+}
 
 window.onmousedown = function (e) {
     var el = e.target;
