@@ -2,21 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\services\XLFExportReader;
 use App\UserTranslation;
+use Storage;
 
 class ExporterController extends Controller
 {
-    public function export() {
+    public function export(Request $request) {
         $uploadedXlfFile = "";
         $choosenLanguages = $_POST["languages"];
 
-        if (isset($_FILES['file'])) {
-            //dd(UserTranslation::class);
-            $uploadedXlfFile = $_FILES['file']['tmp_name'];
-            $fileName = pathinfo($_FILES['file']['name'], PATHINFO_FILENAME);
-        }
+
+        //dd(UserTranslation::class);
+        //dd($request);
+
+        $uploadedXlfFile = $_FILES['xlfupload']['tmp_name'];
+        $fileName = pathinfo($_FILES['xlfupload']['name'], PATHINFO_FILENAME);
+        //Local storage file
+        $userPath = '';
+        $userPath .= '/';
+        $userPath .= + Auth::User()->id;
+        $userPath .= '/';  
+
+        Storage::deleteDirectory($userPath);
+        $request->file('xlfupload')->storeAs($userPath, $request->file('xlfupload')->getClientOriginalName());
+
 
         if ($uploadedXlfFile != "") {
             $translationFileLocation = $fileName;
@@ -31,8 +43,11 @@ class ExporterController extends Controller
             $reader = new XLFExportReader($uploadedXlfFile, $choosenLanguages, $fileName);
             $reader->readFile();
 
+            return \redirect('/');
+
         } else {
             die("No file");
         }
+
     }
 }

@@ -4,6 +4,7 @@ namespace App\Services;
 
 // files with lot of languages to translate need more than 30s to execute
 use PhpOffice\PhpSpreadsheet\Exception;
+use Auth;
 
 ini_set("max_execution_time", 0);
 
@@ -48,8 +49,17 @@ class XLFReader
         $this->sheetName = $sheetName;
         $this->fileType = $fileType;
         $this->demo = $demo;
-        $this->file = file_get_contents($this->xlfFile);
-        //dd($this->file);
+
+        //$this->file = file_get_contents($this->xlfFile);
+        $this->file = $xlfFile;
+
+        $this->xlsFile = "C:/xampp/htdocs/xls_xlf_final/storage/app/";
+        $this->xlsFile .= $xlsFile;
+        /*$userPath = '';
+        $userPath .= '/';
+        $userPath .= + Auth::User()->id;
+        $userPath .= '/';*/
+
     }
 
 
@@ -71,8 +81,10 @@ class XLFReader
 
             // load sheet
             $spreadsheet = $this->reader->load($this->xlsFile);
+            //$spreadsheet = $this->reader->load($this->file);
             $numberOfSheets = $spreadsheet->getSheetCount();
-
+            
+            
             // CHECKING VALIDITY
             // if number of sheets is greater than 1 and type is single throw exception
             if ($this->fileType == "single" && $numberOfSheets > 1) {
@@ -238,8 +250,6 @@ class XLFReader
     }
 
 
-
-
     /**
      * Set all languages that appear in the file
      * @param $columnHeadings
@@ -327,13 +337,9 @@ class XLFReader
 //                        if ($this->demo == true && $demoCounter == 15) {
 //                            break;
 //                        }
-
                     }
-
                 }
-
             }
-
             $position = $posClose;
         }
 

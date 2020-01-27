@@ -598,3 +598,175 @@ select[multiple]{
     padding-left: 20px;
     
 }
+
+#xlf-upload-label-id{
+
+    height: 200px;
+    background-color: rgba(74, 134, 250, 0.3);
+    margin-left: 80px;
+    margin-right: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    border: 2px dashed;
+    border-color: #4A86FA;
+    border-radius: 15px;
+
+    text-align: center;
+    transition: 1s;
+}
+
+#xlf-upload-label-id:hover{
+    background-color: rgba(74, 134, 250, 0.5);
+    border: 2px solid;
+    border-color: #4A86FA;
+    transition: 1s;
+}
+
+.uploadtext-big{
+    color: #4A86FA;
+    font-size: 12pt;
+    font-weight: bold;
+
+}
+
+.uploadtext-small{
+
+    font-size: 10pt;
+    color: rgb(0,0,0,0.5);
+
+}
+
+#xlfupload{
+
+    opacity: 0;
+    width: 100%;
+    z-index: 10;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#xls-upload-label-id{
+
+    height: 200px;
+    background-color: rgba(74, 134, 250, 0.3);
+    margin-left: 80px;
+    margin-right: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    border: 2px dashed;
+    border-color: #4A86FA;
+    border-radius: 15px;
+
+    text-align: center;
+    transition: 1s;
+}
+
+#xls-upload-label-id:hover{
+    background-color: rgba(74, 134, 250, 0.5);
+    border: 2px solid;
+    border-color: #4A86FA;
+    transition: 1s;
+}
+
+
+#xlsupload{
+
+    opacity: 0;
+    width: 100%;
+    z-index: 10;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#userdiv-container{
+
+    box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+
+    width: 300px;
+    height: 200px;
+
+}
+
+#userdiv{
+
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.usertext{
+
+    font-family: "Montserrat", sans-serif;
+
+}
+
+#logoutbtn{
+
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 120px;
+    height: 40px;
+    color: white;
+    background-color: #4A86FA;
+    border: none;
+    border-radius: 10px;
+
+    transition: 1s;
+
+}
+
+#logoutbtn:hover{
+
+    width: 120px;
+    height: 40px;
+    color: #4A86FA;
+    background-color: #fff;
+    border: 1px solid #4A86FA;
+    border-radius: 10px;
+
+    transition: 1s;
+
+}
+
+#button-container{
+
+    display: flex;
+
+}
+
+#downloadxlf{
+
+    height: 80px;
+    width: 200px;
+
+    margin-left: 80px;
+    color:#fff;
+    background-color: #4A86FA;
+    border: none;
+    font-size: 12pt;
+    font-family: "Montserrat", sans-serif;
+
+    border-radius: 40px;
+
+    margin-top: 15px;
+    margin-bottom: 50px;
+
+    transition: 1s;
+}
+
+#downloadxlf:hover{
+
+    border: 2px solid;
+    border-color: #4A86FA;
+    background-color: #fff;
+    color: #4a86fa;
+    transition: 1s;
+}

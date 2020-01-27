@@ -4,22 +4,19 @@
     <head>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src='node_modules/dm-file-uploader/src/js/jquery.dm-uploader.js'></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{ asset('css/signup_v2.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/menu.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/footer.css') }}" />
         <title>Index</title>
-
-
     </head>
 
     <style>
-    
     #registration-page {
 
         display:none;
     }
-    
     </style>
 
     <body>
@@ -99,14 +96,8 @@
             <!-- not available for xlf users -->
             @if(\Illuminate\Support\Facades\Auth::user()->roles_id != 3)
 
-            <li class="nav-li nav-li-js">
-                <a class="grey padding-right-0" href="{{asset('/dashboard')}}">@lang('menu.sixth_item')</a>
-            </li>
-
             @endif
 
-            <!-- Link for logging out -->
-            <li class="nav-li nav-li-js"><a class="grey padding-right-0" href="{{route('logout')}}">@lang('menu.tenth_item')</a></li>
 
             @endauth
             <div class="nav-top-mobile">
@@ -164,8 +155,7 @@
             <p id="must-login">You need to log in to use translator</p>
             <div class="line"></div>
             <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
+                @csrf
                         <div class="form-group row">
                             <label for="email" id="login-email" class="text-input col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -291,20 +281,21 @@
     </div>
     @else
     <div id="action-div">
-        <div id="button-cont">
-        
-            <button id="reg-button-2" class="switch-button" type="button" onclick="changeDisplayToReg()">Sign up</button>
-            <button id="log-button-2" class="switch-button active" type="button" onclick="changeDisplayToLog()">Sign in</button>
-
-        </div>
         <div id="login-page">
-            <h2 class="blue-title">Sign in</h2>
-            <div class="line"></div>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-            <button type="submit">Logout</button>
-
-        </form>
+            <div id="userdiv-container">
+                <div id='userdiv'>
+                <br>
+                <p class='usertext'>Hello, {{Auth::User()->name}}</p>
+                <p class='usertext'>We wish You happy translating.</p>
+                    <div id='button-container'>
+                        <button id='logoutbtn' onclick='scrollToTranslate()'>Scroll to translate</button>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                        <button id='logoutbtn' type="submit">Logout</button>
+                        </form>
+                    </div>  
+                </div>
+            </div>
         </div>
 
         <div id="registration-page">
@@ -379,8 +370,6 @@
    
 
     <script type="text/javascript" src="{{ asset('js/signup.js') }}"></script>
-
-
     <div id="process-container">
         <div id="image-container-background">
             <img class="backgroundsvg2" src="{{ asset('ass/new_ass/SmartLab-Webshape02.svg') }}" >
@@ -424,6 +413,7 @@
     </div>
 
     @if(!Auth::user())
+    
     <p id="text-before-steps">Try uploading your own file:</p>
     <div id="demo-container-background">
             <img class="demo-image-svg" src="{{ asset('ass/new_ass/SmartLab-Webshape03.svg') }}" >
@@ -481,12 +471,8 @@
             <div id="step-one">
                 <h4 class="step-header">Step 1:</h4>
                 <p class="step-text">Upload your original XLIFF file exported from Articulate. Make sure the you exported correct XLIFF format according the video instructions above.</p>
-                <div id="drop-zone">
-                    <p>Drop file here</p>
-                    <div id="clickHere">
-                        <p>Upload XLIFF<p>
-                        <input type="file" name="file" id="file" accept=".xlf" required />
-                    </div>
+                <div class='drop-field'>
+                    <label for='xlfupload' id='xlf-upload-label-id'><input type='file' name='xlfupload' id='xlfupload' class='xlf-upload-class' accept='.xlf' onchange='changeInputText()' required/><br><img class="uploadsvg" src="{{ asset('ass/new_ass/upload-icon.svg') }}" ><p id='uploadtext-xlf' class='uploadtext-big'>Drag & Drop XLIFF files to upload</p><p id='orxlftext' class='uploadtext-small'>or</p><img id='browsexlfsvg' class="browsesvg" src="{{ asset('ass/new_ass/BrowseButton.svg') }}" ></label>
                 </div>
             </div>
             <div id="step-two">
@@ -511,29 +497,30 @@
         </div>
 
         <div id="right-half">
-        <form action="/convertor" method="post" enctype="multipart/form-data">
-        @csrf
+                <form action="/convertor" method="post" enctype="multipart/form-data">
+                @csrf
             <div id="step-three">
                 <h4 class="step-header">Step 3:</h4>
                 <p class="step-text">Upload your updated Excel file so our App can generate translated XLIFF files in all languages you selected. </p> <br>
-                <div id="drop-zone">
-                    <p>Drop file here</p>
-                    <div id="clickHere">
-                        <p>Upload XLS<p>
-                        <input type="file" name="file" id="file" accept=".xlf" required />
-                    </div>
+                <div class='drop-field'>
+                    <label for='xlsupload' name='xlsupload' id='xls-upload-label-id'><br><img class="uploadsvg" src="{{ asset('ass/new_ass/uploadxls-icon.svg') }}" >
+                    <input type='file' name='xlsupload' id='xlsupload' class='xls-upload-class' accept='.xls, .xlsx' onchange='changeInputTextXLS()' required/>
+                    <p id='uploadtext-xls' class='uploadtext-big'>Drag & Drop XLS file to upload</p><p id='orxlstext' class='uploadtext-small'>or</p><img id='browsexlssvg' class="browsesvg" src="{{ asset('ass/new_ass/BrowseButton.svg') }}" ></label>
+                    
                 </div>
-                <input type="submit" id="download-btn" class="submit" value="Download"/>
-                </form>
             </div>
             <div id="step-four">
                 <h4 class="step-header">Step 4:</h4>
                 <p class="step-text">Now, you can insert translated XLIFF files to your Articulate project and all texts should be translated to desired language. </p>
+                <input id='downloadxlf' name="submit" type='submit' value='Download'/>
+                
             </div>
+            </form>
         </div>
     </div>
+    
     @endif
-
+    
     <footer>
     <!--<img class="footer-background" src="images/footer-dark.svg" />-->
     <div class="contain">
@@ -603,8 +590,9 @@
             </div>
         </div>
         </div>
+        
     </footer>
-
+    <script type="text/javascript" src="{{ asset('js/dragandrop.js') }}"></script>
     </body>
 
 </html>
