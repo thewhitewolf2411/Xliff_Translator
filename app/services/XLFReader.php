@@ -6,6 +6,7 @@ namespace App\Services;
 use PhpOffice\PhpSpreadsheet\Exception;
 use Auth;
 use File;
+use Illuminate\Support\Facades\Storage;
 
 ini_set("max_execution_time", 0);
 
@@ -59,7 +60,8 @@ class XLFReader
         $userPath .= + Auth::User()->id;
         $userPath .= '/';*/
 
-        $this->file = file_get_contents("C:/xampp/htdocs/xls_xlf_final/storage/app/".$this->xlfFile);
+        //$this->file = file_get_contents("C:/xampp/htdocs/xls_xlf_final/storage/app/".$this->xlfFile);
+        $this->file = File::get("C:/xampp/htdocs/xls_xlf_final/storage/app/".$this->xlfFile);
     }
 
 
@@ -80,8 +82,8 @@ class XLFReader
             }
 
             // load sheet
-            //$spreadsheet = $this->reader->load($this->xlsFile);
-            $spreadsheet = $this->reader->load($this->file);
+            $spreadsheet = $this->reader->load(Storage::get("C:/xampp/htdocs/xls_xlf_final/storage/app/".$this->xlsFile));
+            //$spreadsheet = $this->reader->load($this->file);
             $numberOfSheets = $spreadsheet->getSheetCount();
             dd($numberOfSheets);
             
