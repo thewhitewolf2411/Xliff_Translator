@@ -61,7 +61,9 @@ class XLFReader
         $userPath .= '/';*/
 
         //$this->file = file_get_contents("C:/xampp/htdocs/xls_xlf_final/storage/app/".$this->xlfFile);
+        
         $this->file = File::get("C:/xampp/htdocs/xls_xlf_final/storage/app/".$this->xlfFile);
+
     }
 
 
@@ -82,10 +84,11 @@ class XLFReader
             }
 
             // load sheet
-            $spreadsheet = $this->reader->load(Storage::get("C:/xampp/htdocs/xls_xlf_final/storage/app/".$this->xlsFile));
+            
+            //$spreadsheet = $this->reader->load(File::get("C:/xampp/htdocs/xls_xlf_final/storage/app/".$this->xlsFile));
             //$spreadsheet = $this->reader->load($this->file);
+            $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load("https://xliff.smartlab.ba/storage/app/".$this->xlsFile);
             $numberOfSheets = $spreadsheet->getSheetCount();
-            dd($numberOfSheets);
             
             // CHECKING VALIDITY
             // if number of sheets is greater than 1 and type is single throw exception
