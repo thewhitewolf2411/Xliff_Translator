@@ -111,7 +111,7 @@ a:not([href]):not([tabindex]):hover {
 	top: 5px;
 	height: 1px;
 	width: 0px;
-	background-color: var(--h1-color) !important;
+	background-color: #fff !important;
 	transition: width 0.2s ease-in-out;
 }
 
@@ -251,7 +251,7 @@ a:not([href]):not([tabindex]):hover {
 	width: 10px;
 	height: 10px;
 	left: 100%;
-	top: 50%;
+	top: 38%;
 	transform: translateX(-100%) translateY(-20%);
 	transition: 0.2s all ease-in-out;
 	z-index: 10;
@@ -705,10 +705,7 @@ a {
 	background-color: transparent;
 	-webkit-text-decoration-skip: objects;
 }
-a:hover {
-	color: #1d68a7;
-	text-decoration: underline;
-}
+
 a:not([href]):not([tabindex]),
 a:not([href]):not([tabindex]):focus,
 a:not([href]):not([tabindex]):hover {
@@ -986,3 +983,7 @@ input[type=radio] {
 /* List jobs */
 
 /* Table list in general */
+
+[type='radio'] {
+	display: none; 
+	}

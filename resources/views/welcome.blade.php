@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="{{ asset('css/signup_v2.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/menu.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/footer.css') }}" />
-        <title>Index</title>
+        <title>Xliff translator</title>
     </head>
 
     <style>
@@ -28,8 +28,8 @@
        
         <div id="text">
         
-            <p id="contact-top">Call: </p> <p id="contact-top">+387 61 811 394</p> <p id="contact-top">+387 33 956 222 </p> <p id="contact-top"> Language: </p>
-            <form id="languageForm" action="/language" method="POST">
+            <p id="contact-top">Call: </p> <p id="contact-top"> <a href="tel: 00387 61 811 394" style="color:#999ca1;">+387 61 811 394</a></p> <p id="contact-top"><a href="tel: 00387 33 956 222" style="color:#999ca1;">+387 33 956 222 </a></p> <p id="contact-top"> Language: </p>
+            <form id="languageForm" action="/language" method="POST" style="top:30px">
             <!-- Form for sending new language after user clicks on one of the select options - page is refreshed with new language translations -->
             @csrf
             @method('PUT')
@@ -56,10 +56,10 @@
                 <a class="grey" id="whatWeDo">@lang('menu.first_item')</a>
                 <div class="filler"></div>
                 <div class="expandable expandable-first">
-                    <a href="{{asset('/pages/courses')}}">@lang('menu.online_courses')</a>
-                    <a href="{{asset('/pages/animations')}}">@lang('menu.educational_video')</a>
-                    <a href="{{asset('/pages/programming')}}">@lang('menu.programming')</a>
-                    <a href="{{asset('/pages/moodle')}}">@lang('menu.moodle')</a>
+                    <a href="https://smartlab.ba/pages/courses">@lang('menu.online_courses')</a>
+                    <a href="https://smartlab.ba/pages/animations">@lang('menu.educational_video')</a>
+                    <a href="https://smartlab.ba/pages/programming">@lang('menu.programming')</a>
+                    <a href="https://smartlab.ba/pages/moodle">@lang('menu.moodle')</a>
                 </div>
             </li>
 
@@ -67,8 +67,8 @@
                 <a class="grey">@lang('menu.second_item')</a>
                 <div class="filler"></div>
                 <div class="expandable expandable-second">
-                    <a href="{{asset('/#about')}}" class="same-page-link">@lang('menu.about_us')</a>
-                    <a href="{{asset('/#team')}}" class="same-page-link">@lang('menu.our_team')</a>
+                    <a href="https://smartlab.ba/#about" class="same-page-link">@lang('menu.about_us')</a>
+                    <a href="https://smartlab.ba/#team" class="same-page-link">@lang('menu.our_team')</a>
                 </div>
             </li>
             <li class="nav-li nav-li-js arrow">
@@ -76,19 +76,19 @@
                 <div class="filler"></div>
                 <div class="expandable join expandable-third">
                     <div class="join-left">
-                        <a href="{{asset('/pages/outsourcing')}}">@lang('menu.outsourcing')</a>
+                        <a href="https://smartlab.ba/pages/outsourcing">@lang('menu.outsourcing')</a>
                     </div>
                     <div class="join-right">
-                        <a href="{{asset('/pages/partner')}}">@lang('menu.become_a_partner')</a>
-                        <a href="{{asset('/pages/careers')}}">@lang('menu.careers')</a>
+                        <a href="https://smartlab.ba/pages/partner">@lang('menu.become_a_partner')</a>
+                        <a href="https://smartlab.ba/pages/careers">@lang('menu.careers')</a>
                     </div>
                 </div>
             </li>
             <li class="nav-li nav-li-js">
                 <!-- Open link in new tab and set its language depending on the current language in main website -->
-                <a class="padding-right-0 grey" href="{{ env("BLOG_DOMAIN")  }}/@if(App::getlocale()){{App::getlocale()}}@else en @endif" target="_blank" rel="noopener">@lang('menu.fourth_item')</a>
+                <a class="padding-right-0 grey" href="https://blog.smartlab.ba/en" @if(App::getlocale()){{App::getlocale()}}@else en @endif" target="_blank" rel="noopener">@lang('menu.fourth_item')</a>
             </li>
-            <li class="nav-li nav-li-js last same-page-link"><a class="padding-right-0 grey" href="{{asset('/#contact')}}">@lang('menu.fifth_item')</a></li>
+            <li class="nav-li nav-li-js last same-page-link"><a class="padding-right-0 grey" href="https://smartlab.ba/#contact">@lang('menu.fifth_item')</a></li>
 
             <!-- This menu items are available only to logged in users -->
             @auth
@@ -138,7 +138,7 @@
                 <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;Generate Excel spreadsheet prepared for inserting translated text <br><br> </li>
                 <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;Compare original XLIFF will uploaded translations <br><br> </li>
                 <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;Engaging tools for webinars <br><br> </li>
-                <li class="list-c">&nbsp;&nbsp;&nbsp;&nbsp;Provide you translated XLIFF in all languages you need so you can import them in your Articulate file and all texts should be translated in new languages without any format change or design. </strong><br><br> </li>
+                <p><strong>Provide you translated XLIFF in all languages you need so you can import them in your Articulate file and all texts should be translated in new languages without any format change or design.</strong><br><br> </p>
             </ul> 
         </div>
     
@@ -288,10 +288,10 @@
                 <p class='usertext'>Hello, {{Auth::User()->name}}</p>
                 <p class='usertext'>We wish You happy translating.</p>
                     <div id='button-container'>
-                        <button id='logoutbtn' onclick='scrollToTranslate()'>Scroll to translate</button>
+                        <button id='logoutbtn1' onclick='scrollToTranslate()'>Scroll to translate</button>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                        <button id='logoutbtn' type="submit">Logout</button>
+                        <button id='logoutbtn2' type="submit">Logout</button>
                         </form>
                     </div>  
                 </div>
@@ -414,7 +414,6 @@
 
     @if(!Auth::user())
     
-    <p id="text-before-steps">Try uploading your own file:</p>
     <div id="demo-container-background">
             <img class="demo-image-svg" src="{{ asset('ass/new_ass/SmartLab-Webshape03.svg') }}" >
     </div>
@@ -423,7 +422,9 @@
             <div id="step-one">
                 <h4 class="step-header">Step 1:</h4>
                 <p class="step-text">Upload your original XLIFF file exported from Articulate. Make sure the you exported correct XLIFF format according the video instructions above.</p>
-                <a href="#log-button"><button class="upload-btn" id="upload-btn" onclick="mustLogin()">Upload XLIFF</button></a>
+                <div class='drop-field'>
+                    <a id="a-button" href="#log-button" onclick="mustLogin()"><label for='xlfupload' id='xlf-upload-label-id' style="pointer-events: none" onclick="mustLogin()"><input type='file' name='xlfupload' id='xlfupload' class='xlf-upload-class' accept='.xlf' onclick="mustLogin()" style="pointer-events: none"/><br><img class="uploadsvg" src="{{ asset('ass/new_ass/upload-icon.svg') }}" ><p id='uploadtext-xlf' class='uploadtext-big'>Drag & Drop XLIFF files to upload</p><p id='orxlftext' class='uploadtext-small'>or</p><img id='browsexlfsvg' class="browsesvg" src="{{ asset('ass/new_ass/BrowseButton.svg') }}" ></label></a>
+                </div>
             </div>
             <div id="step-two">
                 <h4 class="step-header">Step 2:</h4>
@@ -443,7 +444,7 @@
                         <option class="msvalue" value="ru">Russian</option>
                         <option class="msvalue" value="nl">Netherlands</option>
                     </select>
-                    <a href="#log-button"><button id="send-btn" class="submit" onclick="mustLogin()">Send</button></a>
+                    <a id="a-button" href="#log-button"><button id="send-btn" class="submit" onclick="mustLogin()">Send <img id='send-img-btn' src="{{ asset('ass/new_ass/sendIcon.svg') }}" ></button></a>
                 </div>
             </div>
         </div>
@@ -452,16 +453,21 @@
             <div id="step-three">
                 <h4 class="step-header">Step 3:</h4>
                 <p class="step-text">Upload your updated Excel file so our App can generate translated XLIFF files in all languages you selected. <br><br></p>
-                <a href="#log-button"><button class="upload-xls-btn" id="upload-xls-btn" onclick="mustLogin()">Upload XLS</button></a>
+                <div class='drop-field'>
+                    <a id="a-button" href="#log-button" onclick="mustLogin()"><label style="pointer-events: none" for='xlsupload' name='xlsupload' id='xls-upload-label-id' ><br><img class="uploadsvg" src="{{ asset('ass/new_ass/uploadxls-icon.svg') }}" >
+                    <input type='file' name='xlsupload' id='xlsupload' class='xls-upload-class' accept='.xls, .xlsx' onchange='changeInputTextXLS()' required/>
+                    <p id='uploadtext-xls' class='uploadtext-big'>Drag & Drop XLS file to upload</p><p id='orxlstext' class='uploadtext-small'>or</p><img id='browsexlssvg' class="browsesvg" src="{{ asset('ass/new_ass/BrowseButton.svg') }}" ></label></a>
+                    
+                </div>
             </div>
             <div id="step-four">
                 <h4 class="step-header">Step 4:</h4>
                 <p class="step-text">Now, you can insert translated XLIFF files to your Articulate project and all texts should be translated to desired language. <br><br></p>
-                <p class="step-text" id="download-text">Your files are being processed. The download link will be sent to your email...<br><br></p>
-            </div>
+            </div>            
         </div>
-
     </div>
+
+    <p style="float:right; width:35%; margin-top:-280px; margin-right:150px">If you face any issue with our xls2xlf converter, feel free to write us on <a href="mailto: hello@smartlab.ba" >hello@smartlab.ba</a> and we will answer to you as soon  as possible</p>
     @else
     <div id="demo-container">
     
@@ -518,7 +524,7 @@
             </form>
         </div>
     </div>
-    
+    <p style="float:right; width:35%; margin-top:-100px; margin-right:150px">If you face any issue with our xls2xlf converter, feel free to write us on <a href="mailto: hello@smartlab.ba" >hello@smartlab.ba</a> and we will answer to you as soon  as possible</p>
     @endif
     
     <footer>

@@ -102,10 +102,6 @@ header{
     width: 200px;
 }
 
-#xls-title{
-    line-height: 0 !important;
-    color: #ffb04e;
-}
 
 #row-div{
 
@@ -123,6 +119,7 @@ header{
 
 #xls-title{
 
+    line-height: 0 !important;
     color:#ffb353;
     font-size: 18pt;
     margin-top: 0 !important;
@@ -167,6 +164,7 @@ header{
 .list-c{
 
     list-style: none;
+    line-height: 1.3;
 
 }
 #list-main{
@@ -287,7 +285,6 @@ header{
 
 .input-active{
 
-    border: 3px solid #4a86fa;
     height: 50px;
     transition: all 0.3s ease-in-out;
 }
@@ -435,15 +432,19 @@ header{
 
 }
 
+#a-button{
+    height: 0;
+}
+
 #demo-container{
-    background: white;
+    background: transparent;
     z-index: 50;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     width: 80%;
     max-width: 1440px;
-    margin-top: 100px;
+    margin-top: 280px;
 }
 
 #left-half{
@@ -451,6 +452,7 @@ header{
     width: 50%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 20px;
+    background-color: white;
 }
 
 #right-half{
@@ -544,7 +546,7 @@ header{
     margin-bottom: 80px;
     width: 200px;
     height: 200px;
-    border-radius: 20px;
+    border-radius: 20px 0px 0px 20px;
     font-family:  "Montserrat", sans-serif;
     border-color:#4885fa;
 }
@@ -568,6 +570,14 @@ select[multiple]{
     transition: all 0.3s ease-in-out;
 }
 
+.submit:hover{
+
+    background: #fff;
+    color: #4a86fa;
+    transition: all 0.3s ease-in-out;
+    border: 2px solid #4a86fa;
+}
+
 #multiselect-container{
 
     display: flex;
@@ -578,7 +588,7 @@ select[multiple]{
     background: #14213D;
     float: right;
     margin-top: 120px;
-    margin-left: 120px;
+    margin-left: 85px;
     margin-right: 40px;
     transition: all 0.3s ease-in-out;
 }
@@ -591,7 +601,6 @@ select[multiple]{
     transition: all 0.3s ease-in-out;
 
 }
-
 
 .msvalue{
     padding: 5px;
@@ -688,11 +697,14 @@ select[multiple]{
 
 #userdiv-container{
 
+    margin-top: 30px;
+
     box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 20px;
 
-    width: 300px;
+    width: 500px;
     height: 200px;
+    background-color: white;
 
 }
 
@@ -705,32 +717,60 @@ select[multiple]{
 .usertext{
 
     font-family: "Montserrat", sans-serif;
+    font-size: 10pt;
 
 }
 
-#logoutbtn{
+#logoutbtn1{
 
-    margin-left: 5px;
-    margin-right: 5px;
-    width: 120px;
-    height: 40px;
+    margin-left: 0px;
+    margin-right: auto;
+    width: 200px;
+    height: 80px;
     color: white;
     background-color: #4A86FA;
     border: none;
-    border-radius: 10px;
+    border-radius: 40px;
+
+    font-size: 12pt;
 
     transition: 1s;
 
 }
 
-#logoutbtn:hover{
+#logoutbtn2{
 
-    width: 120px;
-    height: 40px;
+    margin-left: 0px;
+    margin-right: auto;
+    width: 200px;
+    height: 80px;
+    color: white;
+    background-color: #14213D;
+    border: none;
+    border-radius: 40px;
+
+    font-size: 12pt;
+
+    transition: 1s;
+
+}
+
+
+#logoutbtn1:hover{
+
     color: #4A86FA;
     background-color: #fff;
     border: 1px solid #4A86FA;
-    border-radius: 10px;
+
+    transition: 1s;
+
+}
+
+#logoutbtn2:hover{
+
+    color: #14213D;
+    background-color: #fff;
+    border: 1px solid #14213D;
 
     transition: 1s;
 
@@ -738,6 +778,7 @@ select[multiple]{
 
 #button-container{
 
+    background-color: #fff;
     display: flex;
 
 }
@@ -769,4 +810,22 @@ select[multiple]{
     background-color: #fff;
     color: #4a86fa;
     transition: 1s;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+#send-img-btn{
+
+    width: 20px;
+    fill: #fff;
+    margin-left: 30px;
+
+}
+
+#send-img-btn:hover{
+
+    fill:#14213D;
+
 }

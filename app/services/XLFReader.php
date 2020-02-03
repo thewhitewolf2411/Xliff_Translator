@@ -87,7 +87,7 @@ class XLFReader
             
             //$spreadsheet = $this->reader->load(File::get("C:/xampp/htdocs/xls_xlf_final/storage/app/".$this->xlsFile));
             //$spreadsheet = $this->reader->load($this->file);
-            $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load("https://xliff.smartlab.ba/storage/app/".$this->xlsFile);
+            $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load("C:/xampp/htdocs/xls_xlf_final/storage/app/".$this->xlsFile);
             $numberOfSheets = $spreadsheet->getSheetCount();
             
             // CHECKING VALIDITY
