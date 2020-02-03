@@ -801,6 +801,8 @@ select[multiple]{
     margin-bottom: 50px;
 
     transition: 1s;
+
+    background-image: "public\ass\new_ass\sendIcon.svg";
 }
 
 #downloadxlf:hover{
@@ -821,11 +823,13 @@ button:hover{
     width: 20px;
     fill: #fff;
     margin-left: 30px;
+    transition: 1s;
 
 }
 
-#send-img-btn:hover{
+#send-btn:hover #send-img-btn{
 
     fill:#14213D;
+    transition: 1s;
 
 }
