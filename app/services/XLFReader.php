@@ -62,7 +62,7 @@ class XLFReader
 
         //$this->file = file_get_contents("C:/xampp/htdocs/xls_xlf_final/storage/app/".$this->xlfFile);
         
-        $this->file = File::get("C:/xampp/htdocs/xls_xlf_final/storage/app/".$this->xlfFile);
+        $this->file = File::get("../storage/app/".$this->xlfFile);
 
     }
 
@@ -87,7 +87,7 @@ class XLFReader
             
             //$spreadsheet = $this->reader->load(File::get("C:/xampp/htdocs/xls_xlf_final/storage/app/".$this->xlsFile));
             //$spreadsheet = $this->reader->load($this->file);
-            $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load("C:/xampp/htdocs/xls_xlf_final/storage/app/".$this->xlsFile);
+            $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load("../storage/app/".$this->xlsFile);
             $numberOfSheets = $spreadsheet->getSheetCount();
             
             // CHECKING VALIDITY
