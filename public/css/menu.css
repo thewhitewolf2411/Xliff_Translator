@@ -94,13 +94,14 @@ a:not([href]):not([tabindex]):hover {
 	z-index: 100;
 	color: white;
 	display: block;
-	padding: 10px 20px 10px 70px;
+	padding: 10px 20px 10px 25px;
 	/*height: 100%;*/
 	width: 100%;
 	text-transform: uppercase;
 	white-space: nowrap;
 	position: relative;
 	font-family: "Montserrat", sans-serif;
+	right: 0;
 }
 
 .nav-li-js > a::before {
@@ -251,7 +252,7 @@ a:not([href]):not([tabindex]):hover {
 	width: 10px;
 	height: 10px;
 	left: 100%;
-	top: 38%;
+	top: 42%;
 	transform: translateX(-100%) translateY(-20%);
 	transition: 0.2s all ease-in-out;
 	z-index: 10;

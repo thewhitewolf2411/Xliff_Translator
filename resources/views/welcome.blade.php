@@ -26,10 +26,11 @@
     <header id="head">
     
        
-        <div id="text">
-        
-            <p id="contact-top">Call: </p> <p id="contact-top"> <a href="tel: 00387 61 811 394" style="color:#999ca1;">+387 61 811 394</a></p> <p id="contact-top"><a href="tel: 00387 33 956 222" style="color:#999ca1;">+387 33 956 222 </a></p> <p id="contact-top"> Language: </p>
-            <form id="languageForm" action="/language" method="POST" style="top:30px">
+        <div id="text"> 
+            <p id="contact-top">Call: </p> <p id="contact-top"> <a href="tel: 00387 61 811 394" style="color:#999ca1;">+387 61 811 394</a></p> <p id="contact-top"><a href="tel: 00387 33 956 222" style="color:#999ca1;">+387 33 956 222 </a></p>
+        </div>
+            
+            <form id="languageForm" action="/language" method="POST" >
             <!-- Form for sending new language after user clicks on one of the select options - page is refreshed with new language translations -->
             @csrf
             @method('PUT')
@@ -39,7 +40,7 @@
            <input type="radio"  class="language"name="language" id="bs" value="bs" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='bs' ) checked @endif><label for="bs" @if(App::getlocale()=='bs' ) class="language-selected" @endif>@lang('menu.bosnian_language')</label>
 
             </form>
-        </div>
+        
     </header> 
     
     <div id="meni-div">
@@ -423,7 +424,7 @@
                 <h4 class="step-header">Step 1:</h4>
                 <p class="step-text">Upload your original XLIFF file exported from Articulate. Make sure the you exported correct XLIFF format according the video instructions above.</p>
                 <div class='drop-field'>
-                    <a id="a-button" href="#log-button" onclick="mustLogin()"><label for='xlfupload' id='xlf-upload-label-id' style="pointer-events: none" onclick="mustLogin()"><input type='file' name='xlfupload' id='xlfupload' class='xlf-upload-class' accept='.xlf' onclick="mustLogin()" style="pointer-events: none"/><br><img class="uploadsvg" src="{{ asset('ass/new_ass/upload-icon.svg') }}" ><p id='uploadtext-xlf' class='uploadtext-big'>Drag & Drop XLIFF files to upload</p><p id='orxlftext' class='uploadtext-small'>or</p><img id='browsexlfsvg' class="browsesvg" src="{{ asset('ass/new_ass/BrowseButton.svg') }}" ></label></a>
+                    <label for='xlfupload' id='xlf-upload-label-id' onclick="mustLogin()"><input type='file' name='xlfupload' id='xlfupload' class='xlf-upload-class' accept='.xlf' onclick="mustLogin()"/><br><img class="uploadsvg" src="{{ asset('ass/new_ass/upload-icon.svg') }}" ><p id='uploadtext-xlf' class='uploadtext-big'>Drag & Drop XLIFF files to upload</p><p id='orxlftext' class='uploadtext-small'>or</p><img id='browsexlfsvg' class="browsesvg" src="{{ asset('ass/new_ass/BrowseButton.svg') }}" ></label>
                 </div>
             </div>
             <div id="step-two">
@@ -462,20 +463,23 @@
                 <h4 class="step-header">Step 3:</h4>
                 <p class="step-text">Upload your updated Excel file so our App can generate translated XLIFF files in all languages you selected. <br><br></p>
                 <div class='drop-field'>
-                    <a id="a-button" href="#log-button" onclick="mustLogin()"><label style="pointer-events: none" for='xlsupload' name='xlsupload' id='xls-upload-label-id' ><br><img class="uploadsvg" src="{{ asset('ass/new_ass/uploadxls-icon.svg') }}" >
-                    <input type='file' name='xlsupload' id='xlsupload' class='xls-upload-class' accept='.xls, .xlsx' onchange='changeInputTextXLS()' required/>
-                    <p id='uploadtext-xls' class='uploadtext-big'>Drag & Drop XLS file to upload</p><p id='orxlstext' class='uploadtext-small'>or</p><img id='browsexlssvg' class="browsesvg" src="{{ asset('ass/new_ass/BrowseButton.svg') }}" ></label></a>
-                    
+                <div class='drop-field'>
+                    <label for='xlsupload' name='xlsupload' id='xls-upload-label-id' onclick="mustLogin()"><br><img class="uploadsvg" src="{{ asset('ass/new_ass/uploadxls-icon.svg') }}" >
+                    <input type='file' name='xlsupload' id='xlsupload' class='xls-upload-class' accept='.xls, .xlsx' onclick='mustLogin()'/>
+                    <p id='uploadtext-xls' class='uploadtext-big'>Drag & Drop XLS file to upload</p><p id='orxlstext' class='uploadtext-small'>or</p><img id='browsexlssvg' class="browsesvg" src="{{ asset('ass/new_ass/BrowseButton.svg') }}" ></label>
+                </div>
                 </div>
             </div>
             <div id="step-four">
                 <h4 class="step-header">Step 4:</h4>
                 <p class="step-text">Now, you can insert translated XLIFF files to your Articulate project and all texts should be translated to desired language. <br><br></p>
+            </div>
+            <div>
+                <p class="info-message">If you face any issue with our xls2xlf converter, feel free to write us on <a href="mailto: hello@smartlab.ba" >hello@smartlab.ba</a> and we will answer to you as soon  as possible</p>
             </div>            
         </div>
     </div>
 
-    <p style="float:right; width:35%; margin-top:-280px; margin-right:150px">If you face any issue with our xls2xlf converter, feel free to write us on <a href="mailto: hello@smartlab.ba" >hello@smartlab.ba</a> and we will answer to you as soon  as possible</p>
     @else
     <div id="demo-container">
     
@@ -492,26 +496,30 @@
             <div id="step-two">
                 <h4 class="step-header">Step 2:</h4>
                 <p class="step-text">Choose languages on which you want to translate your project and click "Send". After that the Excel file will be downloaded and there you should copy-paste translated text. </p>
-                <select id="multiselect" name="languages[]" size="11" multiple required>
-                    <option class="msvalue" value="en">English</option>
-                    <option class="msvalue" value="de">German</option>
-                    <option class="msvalue" value="it">Italian</option>
-                    <option class="msvalue" value="fr">French</option>
-                    <option class="msvalue" value="es">Spanish</option>
-                    <option class="msvalue" value="cs">Czech</option>
-                    <option class="msvalue" value="zh">Chinese</option>
-                    <option class="msvalue" value="pt">Portugal</option>
-                    <option class="msvalue" value="pl">Poland</option>
-                    <option class="msvalue" value="ru">Russian</option>
-                    <option class="msvalue" value="nl">Netherlands</option>
-                </select>
-                <button type="submit" id="send-btn" class="submit">Send
+                <div id="multiselect-container">
+                    <select id="multiselect" name="languages[]" size="11" multiple required>
+                        <option class="msvalue" value="en">English</option>
+                        <option class="msvalue" value="de">German</option>
+                        <option class="msvalue" value="it">Italian</option>
+                        <option class="msvalue" value="fr">French</option>
+                        <option class="msvalue" value="es">Spanish</option>
+                        <option class="msvalue" value="cs">Czech</option>
+                        <option class="msvalue" value="zh">Chinese</option>
+                        <option class="msvalue" value="pt">Portugal</option>
+                        <option class="msvalue" value="pl">Poland</option>
+                        <option class="msvalue" value="ru">Russian</option>
+                        <option class="msvalue" value="nl">Netherlands</option>
+                    </select>
+                    <a id="a-button" href="#log-button">
+                    <button type="submit" id="send-btn" class="submit">Send
                         <svg version="1.1" id="send-img-btn" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                             x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512" xml:space="preserve">
                         <path d="M476,3.2L12.5,270.6c-18.1,10.4-15.8,35.6,2.2,43.2L121,358.4l287.3-253.2c5.5-4.9,13.3,2.6,8.6,8.3L176,407v80.5
                             c0,23.6,28.5,32.9,42.5,15.8L282,426l124.6,52.2c14.2,6,30.4-2.9,33-18.2l72-432C515,7.8,493.3-6.8,476,3.2z"/>
                         </svg>
                 </button>
+                    </a>
+                </div>
             </div>
         </form>
         </div>
@@ -526,7 +534,6 @@
                     <label for='xlsupload' name='xlsupload' id='xls-upload-label-id'><br><img class="uploadsvg" src="{{ asset('ass/new_ass/uploadxls-icon.svg') }}" >
                     <input type='file' name='xlsupload' id='xlsupload' class='xls-upload-class' accept='.xls, .xlsx' onchange='changeInputTextXLS()' required/>
                     <p id='uploadtext-xls' class='uploadtext-big'>Drag & Drop XLS file to upload</p><p id='orxlstext' class='uploadtext-small'>or</p><img id='browsexlssvg' class="browsesvg" src="{{ asset('ass/new_ass/BrowseButton.svg') }}" ></label>
-                    
                 </div>
             </div>
             <div id="step-four">
@@ -535,10 +542,13 @@
                 <input id='downloadxlf' name="submit" type='submit' value='Download'/>
                 
             </div>
+            <div>
+                <p class="info-message">If you face any issue with our xls2xlf converter, feel free to write us on <a href="mailto: hello@smartlab.ba" >hello@smartlab.ba</a> and we will answer to you as soon  as possible</p>
+            </div>     
             </form>
         </div>
     </div>
-    <p style="float:right; width:35%; margin-top:-100px; margin-right:150px">If you face any issue with our xls2xlf converter, feel free to write us on <a href="mailto: hello@smartlab.ba" >hello@smartlab.ba</a> and we will answer to you as soon  as possible</p>
+    
     @endif
     
     <footer>

@@ -59,6 +59,10 @@ function mustLogin(){
     document.getElementById("login-password").textContent = "*Password";
     document.getElementById("login-password").style.color = "red";
 
+    document.getElementById('log-button').scrollIntoView()
+
+    event.preventDefault();
+
 }
 
 function changeSiteLanguage(value) {

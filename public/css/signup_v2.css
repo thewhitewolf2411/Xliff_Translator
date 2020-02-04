@@ -5,6 +5,7 @@ body{
     margin-left: 5%;
     margin-right: 5%;
     position: relative;
+    font-weight: 100;
 
 }
 
@@ -15,7 +16,9 @@ h1, h2, h3, h4, h5, h6{
 }
 
 p{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 100;
+    letter-spacing: 0px;
 }
 
 /*svg displays set to none */
@@ -50,6 +53,9 @@ p{
 }
 
 header{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
     width: 80%;
     margin: 0 auto;
     max-width: 1440px;
@@ -60,19 +66,21 @@ header{
 #text{
     display: flex;
     justify-content: flex-end;
+    margin-right: 50px;
 }
 
 #contact-top{
     display: flex;
-    margin-left: 50px;
+    margin-left: 20px;
     color:#999ca1;
-    margin-top: 30px;
+    margin-top: 10px;
+    font-family: "Montserrat", sans-serif;
 }
 
 #languageForm{
-    margin-left: 20px;
     margin-right: 20px;
     float: right;
+    top: 10px;
 }
 #languageForm label{
     color: #999ca1;
@@ -84,6 +92,7 @@ header{
 .language{
     opacity: 1;
     margin-top: 35px;
+    margin-left: 15px;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -93,13 +102,13 @@ header{
     display: flex;
     width: 80%;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: 0px;
     max-width: 1440px;
 }
 
 #logosvg{
     margin-top: 0;
-    width: 200px;
+    height: 30px;
 }
 
 
@@ -108,6 +117,7 @@ header{
     width: 80%;
     max-width: 1440px;
     margin: 8% auto;
+    margin-top: 12%;
     display: flex;
     margin-bottom: 20px;
 }
@@ -121,7 +131,7 @@ header{
 
     line-height: 0 !important;
     color:#ffb353;
-    font-size: 18pt;
+    font-size: 14pt;
     margin-top: 0 !important;
     font-style: normal;
 }
@@ -165,6 +175,7 @@ header{
 
     list-style: none;
     line-height: 1.3;
+    font-family: "Source Sans Pro";
 
 }
 #list-main{
@@ -183,6 +194,7 @@ header{
 
     margin-left: 150px;
     z-index: 100;
+    height: 500px;
     
 }
 
@@ -434,6 +446,7 @@ header{
 
 #a-button{
     height: 0;
+    margin-left: 0px;
 }
 
 #demo-container{
@@ -444,7 +457,8 @@ header{
     justify-content: center;
     width: 80%;
     max-width: 1440px;
-    margin-top: 280px;
+    margin-top: 320px;
+    margin-bottom: 150px;
 }
 
 #left-half{
@@ -456,14 +470,20 @@ header{
 }
 
 #right-half{
-
+    position: relative;
     width: 50%;
     height: 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-left: 40px;
     border-radius: 20px;
 }
-
+.info-message{
+    background: transparent;
+    position: absolute;
+    margin-right: 50px;
+    left: 50px;
+    transform: translateY(250%);
+}
 .step-header{
 
     margin-top: 80px;
@@ -475,10 +495,11 @@ header{
 }
 
 .step-text{
-    font-family: "Montserrat", sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
     margin-left: 80px;
     margin-right: 80px;
     font-size: 12pt;
+    font-weight: 600 !important;
 }
 
 #download-text{
@@ -581,6 +602,7 @@ select[multiple]{
 #multiselect-container{
 
     display: flex;
+    width: 100%;
 }
 
 #send-btn{
@@ -588,8 +610,7 @@ select[multiple]{
     background: #14213D;
     float: right;
     margin-top: 120px;
-    margin-left: 85px;
-    margin-right: 40px;
+    margin-left: 80px;
     transition: all 0.3s ease-in-out;
 }
 
@@ -611,7 +632,7 @@ select[multiple]{
 #xlf-upload-label-id{
 
     height: 200px;
-    background-color: rgba(74, 134, 250, 0.3);
+    background-color: rgba(74, 134, 250, 0.1);
     margin-left: 80px;
     margin-right: 80px;
     display: flex;
@@ -619,7 +640,7 @@ select[multiple]{
     justify-content: center;
     position: relative;
     border: 2px dashed;
-    border-color: #4A86FA;
+    border-color: rgba(74, 134, 250, 0.9);
     border-radius: 15px;
 
     text-align: center;
@@ -627,9 +648,9 @@ select[multiple]{
 }
 
 #xlf-upload-label-id:hover{
-    background-color: rgba(74, 134, 250, 0.5);
+    background-color: rgba(74, 134, 250, 0.4);
     border: 2px solid;
-    border-color: #4A86FA;
+    border-color: rgba(74, 134, 250, 0.9);
     transition: 1s;
 }
 
@@ -658,10 +679,14 @@ select[multiple]{
     top: 0;
 }
 
+#xlfupload:hover{
+    cursor: pointer;
+}
+
 #xls-upload-label-id{
 
     height: 200px;
-    background-color: rgba(74, 134, 250, 0.3);
+    background-color: rgba(74, 134, 250, 0.1);
     margin-left: 80px;
     margin-right: 80px;
     display: flex;
@@ -669,7 +694,7 @@ select[multiple]{
     justify-content: center;
     position: relative;
     border: 2px dashed;
-    border-color: #4A86FA;
+    border-color: rgba(74, 134, 250, 0.9);
     border-radius: 15px;
 
     text-align: center;
@@ -677,9 +702,9 @@ select[multiple]{
 }
 
 #xls-upload-label-id:hover{
-    background-color: rgba(74, 134, 250, 0.5);
+    background-color: rgba(74, 134, 250, 0.4);
     border: 2px solid;
-    border-color: #4A86FA;
+    border-color: rgba(74, 134, 250, 0.9);
     transition: 1s;
 }
 
@@ -734,7 +759,7 @@ select[multiple]{
 
     font-size: 12pt;
 
-    transition: 1s;
+    transition: 0.5s;
 
 }
 
@@ -751,7 +776,7 @@ select[multiple]{
 
     font-size: 12pt;
 
-    transition: 1s;
+    transition: 0.5s;
 
 }
 
@@ -760,9 +785,8 @@ select[multiple]{
 
     color: #4A86FA;
     background-color: #fff;
-    border: 1px solid #4A86FA;
 
-    transition: 1s;
+    transition: 0.5s;
 
 }
 
@@ -770,9 +794,8 @@ select[multiple]{
 
     color: #14213D;
     background-color: #fff;
-    border: 1px solid #14213D;
 
-    transition: 1s;
+    transition: 0.5s;
 
 }
 
@@ -831,5 +854,13 @@ button:hover{
 
     fill:#14213D;
     transition: 1s;
+
+}
+
+.text-input{
+
+    font-family: 'Source Sans Pro', sans-serif !important;
+    font-weight: 600;
+    font-size: 12pt;
 
 }

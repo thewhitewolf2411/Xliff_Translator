@@ -23,8 +23,9 @@ html {
 
 .contain {
     max-width: 1440px;
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
+    margin-bottom: -30px;
 }
 
 .footer-button {
@@ -140,7 +141,7 @@ footer {
     color: white;
     background:url(../ass/footer/footer-dark.svg);
     background-repeat: no-repeat;
-    background-size: 3000px;
+    background-size: 3300px;
     /* background-position-y: 50px; */
     background-position-x: 50%;
 }
