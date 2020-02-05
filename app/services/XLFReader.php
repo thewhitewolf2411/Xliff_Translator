@@ -463,7 +463,7 @@ class XLFReader
         //here!
         //$textToReplace .= "<br>";
         if(substr($oldTextToReplace, -1) == " " || substr($oldTextToReplace, -1) == "\n"){
-            $textToReplace = $this->findReplacementWord($textToReplace) . "\n";
+            $textToReplace = $this->findReplacementWord($textToReplace) . "\n" ."\n";
         }
         else{
         // find appropriate translation for this word
