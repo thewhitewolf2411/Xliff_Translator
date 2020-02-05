@@ -46,7 +46,7 @@
 
         <div id="meni-text">
             <p id="xls-title"><strong>xls2xlf</strong></p>
-            <img id="logosvg" src="{{ asset('ass/smartlab-logo.svg') }}" >
+            <img  onclick="window.location.reload();" style="cursor:pointer;" id="logosvg" src="{{ asset('ass/smartlab-logo.svg') }}" >
             <div class="nav-button-inner" id="nav-button-inner"></div>
             <div class="nav-button-inner-before" id="nav-button-inner-before"></div>
             <div class="nav-button-inner-after" id="nav-button-inner-after"></div>
@@ -89,7 +89,6 @@
                 <a class="padding-right-0 grey" href="https://blog.smartlab.ba/en" @if(App::getlocale()){{App::getlocale()}}@else en @endif" target="_blank" rel="noopener">@lang('menu.fourth_item')</a>
             </li>
             <li class="nav-li nav-li-js last same-page-link"><a class="padding-right-0 grey" href="https://smartlab.ba/#contact">@lang('menu.fifth_item')</a></li>
-
             <!-- This menu items are available only to logged in users -->
             @auth
 
@@ -116,8 +115,9 @@
 
             </div>
         </div>
+        
     </div>
-
+        <button class="submit" style="margin-right:10%;" onclick="window.location.href='https://smartlab.ba/'">Home</button>
     <div id="row-div">
         <div id="title-container">
             <h2 id="titlediv"><strong>Articulate Storyline <br> automatic text translation.</strong></h2>

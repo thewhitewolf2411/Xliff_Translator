@@ -29,8 +29,8 @@ class CheckClientLanguage
             }
         }
         // set language to the App object
+        dd($request);
         App::setlocale($lang);
         return $next($request);
-        // see: https://stackoverflow.com/questions/3650006/get-country-of-ip-address-with-php
     }
 }
