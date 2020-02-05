@@ -1,6 +1,5 @@
 
 <html>
-
     <head>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -165,7 +164,7 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <br><strong id="login-error-email" class="error-message-login">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -179,7 +178,7 @@
 
                                 @error('password')
                                     <span class="text-input invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <br><strong id="login-error-password" class="error-message-login">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -228,7 +227,7 @@
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <br><strong id="registration-error-name" class="error-message-registration">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -242,7 +241,7 @@
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <br><strong id="registration-error-email" class="error-message-registration">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
@@ -256,7 +255,7 @@
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <br><strong id="registration-error-password" class="error-message-registration">{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>

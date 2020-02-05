@@ -329,13 +329,15 @@ header{
     position: relative;
     margin: 0 auto;
     margin-top: 0px;
-    width: 80%;
+    width: 75%;
+    max-width: 1440px;
+    margin: 0 auto;
 
 }
 
 #image-container-steps{
 
-    width: 80%;
+    width: 68%;
     max-width: 1440px;
     margin: 0 auto;
     margin-top: 250px;
@@ -389,7 +391,7 @@ header{
 .process-class{
 
     width: 20%;
-    margin: 30px auto;
+    margin: 40px auto;
 
 }
 

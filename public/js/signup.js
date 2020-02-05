@@ -1,5 +1,5 @@
 function changeSiteLanguage(value) {
-    document.getElementById("languageForm").submit();
+    document.getElementById("languageForm").submit(value);
  }
  
 
@@ -79,3 +79,43 @@ window.onmousedown = function (e) {
         else el.setAttribute('selected', '');
     }
 }
+
+$(document).ready(function() {
+    
+
+
+    if($(".error-message-registration").text() == ""){
+
+        console.log('default');
+        return;
+
+    } else {
+
+        if($(".error-message-registration").text() == "The password must be at least 8 characters."){
+
+            changeDisplayToReg();
+            $("#login-error-email").hide();
+            $("#login-error-password").hide();
+            return;
+        }
+
+        if($(".error-message-registration").text() == "The email has already been taken."){
+
+            changeDisplayToReg();
+            $("#login-error-email").hide();
+            $("#login-error-password").hide();
+            return;
+        }
+
+        if($(".error-message-registration").text() == "These credentials do not match our records."){
+            
+            changeDisplayToLog();
+            $("#registration-error-email").hide();
+            $("#registration-error-password").hide();
+            return;
+        }
+
+
+    }
+
+});
