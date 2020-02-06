@@ -1,11 +1,12 @@
+<!DOCTYPE html>
 
-<html>
+<html lang="{{ str_replace('_', '-', Session::get('locale')) }}" >
     <head>
         <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src='node_modules/dm-file-uploader/src/js/jquery.dm-uploader.js'></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{ asset('css/signup_v2.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/signup.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/menu.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/footer.css') }}" />
         <title>Xliff translator</title>
@@ -22,108 +23,17 @@
     <div id="image-container">
         <img class="backgroundsvg" src="{{ asset('ass/new_ass/SmartLab-Webshape01.svg') }}" >
     </div>
-    <header id="head">
-    
-       
-        <div id="text"> 
-            <p id="contact-top">Call: </p> <p id="contact-top"> <a href="tel: 00387 61 811 394" style="color:#999ca1;">+387 61 811 394</a></p> <p id="contact-top"><a href="tel: 00387 33 956 222" style="color:#999ca1;">+387 33 956 222 </a></p>
-        </div>
-            
-            <form id="languageForm" action="/language" method="POST" >
-            <!-- Form for sending new language after user clicks on one of the select options - page is refreshed with new language translations -->
-            @csrf
-            @method('PUT')
 
-            <input type="radio" class="language" name="language" id="en" value="en" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='en' ) checked @endif><label for="en" @if(App::getlocale()=='en' ) class="language-selected" @endif>@lang('menu.english_language')</label>
-           <input type="radio" class="language" name="language" id="de" value="de" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='de' ) checked @endif><label for="de" @if(App::getlocale()=='de' ) class="language-selected" @endif>@lang('menu.german_language')</label>
-           <input type="radio"  class="language"name="language" id="bs" value="bs" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='bs' ) checked @endif><label for="bs" @if(App::getlocale()=='bs' ) class="language-selected" @endif>@lang('menu.bosnian_language')</label>
+    @include('layouts.menu')
+     @yield('menu')
 
-            </form>
         
-    </header> 
-    
-    <div id="meni-div">
-
-        <div id="meni-text">
-            <p id="xls-title"><strong>xls2xlf</strong></p>
-            <img  onclick="window.location.reload();" style="cursor:pointer;" id="logosvg" src="{{ asset('ass/smartlab-logo.svg') }}" >
-            <div class="nav-button-inner" id="nav-button-inner"></div>
-            <div class="nav-button-inner-before" id="nav-button-inner-before"></div>
-            <div class="nav-button-inner-after" id="nav-button-inner-after"></div>
-        </div>
-        <div class="nav-li-container" id="nav-li-container">
-            <li class="nav-li nav-li-js arrow first">
-                <a class="grey" id="whatWeDo">@lang('menu.first_item')</a>
-                <div class="filler"></div>
-                <div class="expandable expandable-first">
-                    <a href="https://smartlab.ba/pages/courses">@lang('menu.online_courses')</a>
-                    <a href="https://smartlab.ba/pages/animations">@lang('menu.educational_video')</a>
-                    <a href="https://smartlab.ba/pages/programming">@lang('menu.programming')</a>
-                    <a href="https://smartlab.ba/pages/moodle">@lang('menu.moodle')</a>
-                </div>
-            </li>
-
-            <li class="nav-li nav-li-js arrow">
-                <a class="grey">@lang('menu.second_item')</a>
-                <div class="filler"></div>
-                <div class="expandable expandable-second">
-                    <a href="https://smartlab.ba/#about" class="same-page-link">@lang('menu.about_us')</a>
-                    <a href="https://smartlab.ba/#team" class="same-page-link">@lang('menu.our_team')</a>
-                </div>
-            </li>
-            <li class="nav-li nav-li-js arrow">
-                <a class="grey">@lang('menu.third_item')</a>
-                <div class="filler"></div>
-                <div class="expandable join expandable-third">
-                    <div class="join-left">
-                        <a href="https://smartlab.ba/pages/outsourcing">@lang('menu.outsourcing')</a>
-                    </div>
-                    <div class="join-right">
-                        <a href="https://smartlab.ba/pages/partner">@lang('menu.become_a_partner')</a>
-                        <a href="https://smartlab.ba/pages/careers">@lang('menu.careers')</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-li nav-li-js">
-                <!-- Open link in new tab and set its language depending on the current language in main website -->
-                <a class="padding-right-0 grey" href="https://blog.smartlab.ba/en" @if(App::getlocale()){{App::getlocale()}}@else en @endif" target="_blank" rel="noopener">@lang('menu.fourth_item')</a>
-            </li>
-            <li class="nav-li nav-li-js last same-page-link"><a class="padding-right-0 grey" href="https://smartlab.ba/#contact">@lang('menu.fifth_item')</a></li>
-            <!-- This menu items are available only to logged in users -->
-            @auth
-
-            <!-- not available for xlf users -->
-            @if(\Illuminate\Support\Facades\Auth::user()->roles_id != 3)
-
-            @endif
-
-
-            @endauth
-            <div class="nav-top-mobile">
-
-                <p><span>Call: </span><span>+387 61 811 394</span> <span class="margin-right">+387 33 956 222</span></p>
-                <form action="/language" method="POST" class="mobile-language-form">
-                    <!-- Form for sending new language after user clicks on one of the select options - page is refreshed with new language translations -->
-                    @csrf
-                    @method('PUT')
-
-                    <input type="radio" name="language" id="en" value="en" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='en' ) checked @endif><label for="en" @if(App::getlocale()=='en' ) class="language-selected" @endif>@lang('menu.english_language')</label>
-                    <input type="radio" name="language" id="de" value="de" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='de' ) checked @endif><label for="de" @if(App::getlocale()=='de' ) class="language-selected" @endif>@lang('menu.german_language')</label>
-                    <input type="radio" name="language" id="bs" value="bs" onclick="changeSiteLanguage(this.value)" @if(App::getlocale()=='bs' ) checked @endif><label for="bs" @if(App::getlocale()=='bs' ) class="language-selected" @endif>@lang('menu.bosnian_language')</label>
-
-                </form>
-
-            </div>
-        </div>
-        
-    </div>
-        <button class="submit" style="margin-right:10%;" onclick="window.location.href='https://smartlab.ba/'">Home</button>
     <div id="row-div">
         <div id="title-container">
-            <h2 id="titlediv"><strong>Articulate Storyline <br> automatic text translation.</strong></h2>
+            <h2 id="titlediv">Articulate Storyline <br> automatic text translation.</h2>
             <p id="xls-title">xls2xlf converter</p>
         </div>
-        <div id="title-div-container">
+        <div class="title-class-container" id="title-div-container">
             <p id="subtext-regular"><strong id="subtext-bold">Find out More:</strong> <br> Xliff Articulate Translation Tool Tutorial.</p> 
             <img id="playvideobtn" src= "{{ asset('ass/play-button.svg') }}" onclick="playvideo()">
         </div>
@@ -143,7 +53,7 @@
         </div>
     
     @if(!Auth::user())
-    <div id="action-div">
+    <div class ="action-class" id="action-div">
         <div id="button-cont">
         
             <button id="reg-button" class="switch-button" type="button" onclick="changeDisplayToReg()">Sign up</button>
@@ -365,7 +275,7 @@
         </div>
     </div>
     @endif
-</div>
+    </div>
 
    
 
@@ -387,21 +297,25 @@
                 </div>
             <div id="steps-container">
                 <div id="upload" class="process-class">
+                    <img class="process-images-small" src="{{ asset('ass/Steps/icon01.svg') }}">
                     <h3 class="process-steps">Upload your file</h3>
                     <p class="process-text">Upload XLF and select languages for translation</p>
                 </div>
 
                 <div id="download" class="process-class">
+                 <img class="process-images-small" src="{{ asset('ass/Steps/icon02.svg') }}">
                     <h3 class="process-steps">Download XLS</h3>
                     <p class="process-text">Download XLS file (excel)  which contains all the data from you original XLF and additional collumns for  selected languages</p>
                 </div>
 
                 <div id="translate" class="process-class">
+                    <img class="process-images-small" src="{{ asset('ass/Steps/icon03.svg') }}">
                     <h3 class="process-steps">Translate collumns</h3>
                     <p class="process-text">Insert translations in given collumns and upload your files (Original XLIFF and new XLS file with translations) </p>
                 </div>
 
                 <div id="ready" class="process-class">
+                    <img class="process-images-small" src="{{ asset('ass/Steps/icon04.svg') }}">
                     <h3 class="process-steps">Ready for download</h3>
                     <p class="process-text">The App will created XLIFF files for selected languages and then they are ready for insertion in your Articulate project</p>
                 </div>
@@ -460,7 +374,7 @@
         <div id="right-half">
             <div id="step-three">
                 <h4 class="step-header">Step 3:</h4>
-                <p class="step-text">Upload your updated Excel file so our App can generate translated XLIFF files in all languages you selected. <br><br></p>
+                <p class="step-text">Upload your updated Excel file so our App can generate translated XLIFF files in all languages you selected. </p>
                 <div class='drop-field'>
                 <div class='drop-field'>
                     <label for='xlsupload' name='xlsupload' id='xls-upload-label-id' onclick="mustLogin()"><br><img class="uploadsvg" src="{{ asset('ass/new_ass/uploadxls-icon.svg') }}" >
@@ -471,7 +385,7 @@
             </div>
             <div id="step-four">
                 <h4 class="step-header">Step 4:</h4>
-                <p class="step-text">Now, you can insert translated XLIFF files to your Articulate project and all texts should be translated to desired language. <br><br></p>
+                <p class="step-text">Now, you can insert translated XLIFF files to your Articulate project and all texts should be translated to desired language. </p>
             </div>
             <div>
                 <p class="info-message">If you face any issue with our xls2xlf converter, feel free to write us on <a href="mailto: hello@smartlab.ba" >hello@smartlab.ba</a> and we will answer to you as soon  as possible</p>
@@ -551,77 +465,11 @@
     @endif
     
     <footer>
-    <!--<img class="footer-background" src="images/footer-dark.svg" />-->
-    <div class="contain">
-        <div class="footer-top-row">
-            <nav class="footer-top-column --left">
-                <ul>
-                    <li><a href="/#anchor">@lang('menu.first_item')</a></li>
-                    <li><a href="/#about">@lang('menu.second_item')</a></li>
-                    <li><a href="{{asset('/pages/partner')}}">@lang('menu.third_item')</a></li> <!-- TODO do we have this page, we need to set link-->
-                    <li><a href="{{env('BLOG_DOMAIN')}}/{{App::getlocale()}}" target="_blank">@lang('menu.fourth_item')</a></li>
-                    <li><a href="/#contact">@lang('menu.fifth_item')</a></li>
-                </ul>
-            </nav>
-            <div class="footer-top-column phone --center">
-                <div>
-                    <img src="{{asset('/ass/footer/social-icons/phone-receiver.svg')}}" />
-                    <div class="footer-phone-container">
-                        <p>
-                            <a href="tel: 00387 61 811 394">+387 61 811 394</a>
-                        </p>
-                        <p>
-                            <a href="tel: 00387 33 956 222">+387 33 956 222</a>
-                        </p>
-                    </div>
-                </div>
-                <div>
-                    <img src="{{asset('/ass/footer/social-icons/mail.svg')}}" />
-                    <p>
-                        <a href=" mailto:hello@smartlab.ba">hello@smartlab.ba</a>
-                    </p>
-                </div>
-            </div>
-            <div class="footer-top-column --center nowrap">
-                <img src="{{asset('/ass/footer/social-icons/location.svg ')}}" />
-                <address>
-                    <a href="https://www.google.com/maps/place/SmartLab/@43.8542408,18.3870703,17z/data=!3m1!4b1!4m5!3m4!1s0x4758c8c48c458d13:0xd3b7b0136b05bfe5!8m2!3d43.854237!4d18.389259" target="_blank">
-                        <p>Kolodvorska 5,</p>
-                        <p><span class="wrap">Sarajevo,</span> <span>@lang('footer.state')</span></p>
-                    </a>
-                </address>
-            </div>
-            <div class="footer-top-column --right">
-                <button class="footer-button">
-                    <a href="https://www.google.com/maps/place/SmartLab/@43.8542408,18.3870703,17z/data=!3m1!4b1!4m5!3m4!1s0x4758c8c48c458d13:0xd3b7b0136b05bfe5!8m2!3d43.854237!4d18.389259" target="_blank">@lang('footer.findUs')</a>
-                </button>
-            </div>
-        </div>
-        <div class="footer-bot-row">
-            <div class="footer-bot-column --left ">
-                <a href="#"><img src="{{asset('/ass/footer/social-icons/smartlab-white.svg')}}" class="footer-bot-icons" /></a>
-
-            </div>
-            <div class="footer-bot-column --center">
-                Copyright &copy; 2019 SmartLab
-            </div>
-            <div class="footer-bot-column --right">
-                <div class="social-icons-container">
-                    <a href="https://www.facebook.com/smartlabsarajevo/" target="_blank"><img src="{{asset('/ass/footer/social-icons/fb-icon.svg')}}" class="footer-bot-icons" /></a>
-                    <a href="https://www.linkedin.com/company/smartlab-sarajevo" target="_blank"><img src="{{asset('/ass/footer/social-icons/linkedin-icon.svg')}}" class=" footer-bot-icons" /></a>
-                    <a href="#" target="_blank">
-                        <img src="{{asset('/ass/footer/social-icons/skype-icon.svg')}}" class="footer-bot-icons" />
-                    </a>
-                    <a href="#" target="_blank">
-                        <img src="{{asset('/ass/footer/social-icons/youtube-icon.svg')}}" class="footer-bot-icons no-right-margin" />
-                    </a>
-                </div>
-            </div>
-        </div>
-        </div>
-        
+     @include('layouts.footer')
+     @yield('footer')
     </footer>
     <script type="text/javascript" src="{{ asset('js/dragandrop.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/scrollbar.js') }}"></script>
     </body>
 
 </html>

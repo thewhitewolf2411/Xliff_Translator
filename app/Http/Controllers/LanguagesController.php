@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Services\LogService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Session;
+use Config;
 
 class LanguagesController extends Controller
 {
@@ -26,10 +28,12 @@ class LanguagesController extends Controller
             $language = $request->input("language");
             // set language to session so that we can check it in the middleware
             session_start();
-            session()->put('language', $language);
+            session()->put('locale', $language);
+            App::setLocale($language);
+
         } catch (\Exception $e) {
             // add log
-            //$this->logService->setLog('ERROR', 'LanguagesController - switchLanguage: '. $e->getMessage());
+            $this->logService->setLog('ERROR', 'LanguagesController - switchLanguage: '. $e->getMessage());
         }
         // return to last visited page
         return back();

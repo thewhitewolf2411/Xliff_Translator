@@ -1,7 +1,7 @@
 function changeSiteLanguage(value) {
-    document.getElementById("languageForm").submit(value);
- }
- 
+	document.getElementById('languageForm').submit();
+}
+
 
  function playvideo() {
 
