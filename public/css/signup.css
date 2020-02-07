@@ -850,6 +850,11 @@ span{
 
     }
 
+    #titlediv{
+        font-size: 2.0em !important;
+        width: 60%;
+    }
+
     .action-class{
         display: flex;
         flex-direction: column !important;
@@ -914,6 +919,37 @@ span{
         margin: 0 auto;
     }
 
+    /* Login */
+    .line{
+        width: 100px;
+        margin-left: 5%;
+    }
+
+    .input{
+        width: 300px;
+        margin-left: 5%;
+    }
+
+    .text-input{
+        margin-left: 5%;
+    }
+
+    .blue-title{
+        margin-left: 5%;
+    }
+
+    .switch-button{
+        width: 160px;
+    }
+
+    #action-div{
+        height: 600px;
+    }
+
+    .submit{
+        margin-right: 5%;
+    }
+
     /* Process */
 
     #image-container-steps{
@@ -952,7 +988,7 @@ span{
     }
 
     #multiselect{
-        width: 80%;
+        width: 60%;
         margin-bottom: 140px;
     }  
 
@@ -965,6 +1001,41 @@ span{
     #demo-container{
         margin-top: 0;
         margin-left: 5%;
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio:0){  
+        .browsesvg
+        {
+            margin-top: -15px;
+        }
+
+        .uploadtext-small{
+
+            margin-top: -25px;
+
+        }
+
+        .uploadsvg{
+
+            margin-top: -45px
+
+        }
+
+        .uploadtext-big{
+            font-size: 10pt;
+            width: 80%;
+            margin-left: 10%;
+            margin-bottom: 30px;
+        }
+    }
+
+
+}
+
+@media screen and (max-width:1080){
+
+    #titlediv{
+        font-size: 2.2em !important;
     }
 
 }

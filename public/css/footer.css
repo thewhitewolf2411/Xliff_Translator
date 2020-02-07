@@ -237,8 +237,7 @@ footer img {
 
         background-position-y: 25px;
 
-        padding-top: 185px;
-        padding-bottom: 25px;
+        padding-top: 245px;
     }
 
     footer .contain {
@@ -310,8 +309,7 @@ footer img {
     .footer-top-row .--right {
         flex-basis: 100%;
         justify-content: flex-end;
-        margin-top: 25px;
-        margin-bottom: 10px;
+        margin-top: 0px;
     }
 
     .footer-top-row .--center {
@@ -363,7 +361,7 @@ footer img {
 @media screen and (max-width: 425px) {
     footer {
         background-position-x: 35%;
-        background-position-y: -33px;
+        background-position-y: 120px;
         background-size: 1900px;
     }
 
