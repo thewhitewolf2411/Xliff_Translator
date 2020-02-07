@@ -59,6 +59,7 @@
         color: #fff;
         opacity: .5;
         cursor: pointer;
+        margin-left: 12px;
     }
     .language-selected {
         opacity: 1 !important;
@@ -372,6 +373,7 @@
         }
         .nav-top p span {
             margin-right: 5px;
+            color: #fff;
         }
         .home-button {
             margin-left: 0 !important;
@@ -390,6 +392,7 @@
         }
         .nav-top {
             justify-content: space-between;
+            background-color: transparent;
         }
         .nav-top p {
             margin-right: 0;

@@ -844,15 +844,28 @@ span{
 
 @media screen and (max-width:1200px){
 
+    .backgroundsvg{
+        width: 110%;
+        margin-right: -5%;
+    }
+
     #title-div-container{
 
         display: none !important;
-
     }
 
     #titlediv{
         font-size: 2.0em !important;
         width: 60%;
+        margin-top: 80px;
+    }
+
+    .nav-logo-container{
+        margin-top: -20px;
+    }
+
+    .nav-logo-container span{
+        color: black !important;
     }
 
     .action-class{
@@ -1035,13 +1048,5 @@ span{
         }
     }
 
-
-}
-
-@media screen and (max-width:1080){
-
-    #titlediv{
-        font-size: 2.2em !important;
-    }
 
 }

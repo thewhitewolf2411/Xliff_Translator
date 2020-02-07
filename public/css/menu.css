@@ -335,9 +335,7 @@ a:not([href]):not([tabindex]):hover {
 }
 
 @media screen and (max-width: 900px) {
-	.nav-top {
-		display: none !important;
-	}
+
 	.nav-top-mobile {
 		display: flex !important;
 		flex-direction: column-reverse;
@@ -392,8 +390,8 @@ a:not([href]):not([tabindex]):hover {
 		justify-content: space-between;
 		padding-top: 10px !important;
 		padding-bottom: 10px !important;
-		background-color: white;
-		width: 100vw !important;
+		background-color: transparent;
+		width: 92vw !important;
 		padding-left: 2.5% !important;
 		padding-right: 2.5% !important;
 	}

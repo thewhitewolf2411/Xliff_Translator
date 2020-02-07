@@ -1,4 +1,3 @@
-
     document.addEventListener("DOMContentLoaded", function(event) {
         let navTop = document.querySelector("#nav-top");
         let navTopLabel = document.querySelectorAll(".nav-top label");
@@ -10,14 +9,15 @@
             navTop.style.height = "0px";
             navTop.style.marginBottom = "0px";
             navTop.style.marginTop = "0px";
-            navBot.style.marginTop = "10px";
+            navBot.style.marginTop = "15px";
             navBot.style.marginBottom = "10px";
+            navBot.style.backgroundColor = "transparent";
             nav.style.backgroundColor = "white";
             nav.classList.add("shadow");
         }
         function scrollTop(position) {
             navTop.style.height = "40px";
-            navTop.style.marginTop = "10px";
+            navTop.style.marginTop = "15px";
             if (position > 10) {
                 nav.style.backgroundColor = "white";
                 for (let i = 0; i < navTopLabel.length; i++) {
@@ -45,5 +45,7 @@
                 scrollBot();
             }
             this.oldScroll = this.scrollY;
-        });
+        },
+            {passive: true}
+        );
     });
