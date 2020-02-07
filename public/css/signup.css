@@ -1027,6 +1027,12 @@ span{
             margin-left: 10%;
             margin-bottom: 30px;
         }
+
+        #multiselect{
+
+            height: 30px;
+
+        }
     }
 
 
