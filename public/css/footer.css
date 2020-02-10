@@ -363,6 +363,7 @@ footer img {
         background-position-x: 35%;
         background-position-y: 120px;
         background-size: 1900px;
+
     }
 
     .footer-top-row {
@@ -394,8 +395,8 @@ footer img {
 @media screen and (max-width: 365px) {
     footer {
         background-position-x: 27%;
-        background-size: 2000px;
-        background-position-y: 20px;
+        background-size: 5500px;
+        background-position-y: -60px;
     }
 
     .footer-top-column {

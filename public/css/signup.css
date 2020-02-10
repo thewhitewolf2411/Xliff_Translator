@@ -1023,10 +1023,7 @@ span{
     }
 
     /* Footer */
-
-    footer{
-        display: none !important;
-    }
+    
 
     @media screen and (-webkit-min-device-pixel-ratio:0){  
         .browsesvg
