@@ -218,9 +218,11 @@
         }
         .nav-bot-left {
             flex-basis: 100%;
+            margin-top: -5px;
         }
         .nav-bot {
             flex-wrap: wrap;
+            margin-top: 10px;
         }
         .margin-top-15 {
             margin-top: 15px;
@@ -383,6 +385,7 @@
         }
         #languageForm {
             white-space: nowrap;
+            left: 0px !important;
         }
     }
     @media screen and (max-width: 425px) {
@@ -414,7 +417,7 @@
         #nav-top {
             height: 40px;
             align-items: center;
-            margin-bottom: 15px;
+            margin-top: 25px;
         }
     }
 </style>

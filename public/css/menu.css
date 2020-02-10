@@ -392,7 +392,6 @@ a:not([href]):not([tabindex]):hover {
 		padding-bottom: 10px !important;
 		background-color: transparent;
 		width: 92vw !important;
-		padding-left: 2.5% !important;
 		padding-right: 2.5% !important;
 	}
 

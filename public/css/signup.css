@@ -855,17 +855,19 @@ span{
     }
 
     #titlediv{
-        font-size: 2.0em !important;
+        font-size: 2.2em !important;
         width: 60%;
-        margin-top: 80px;
-    }
-
-    .nav-logo-container{
-        margin-top: -20px;
+        margin-top: 140px;
     }
 
     .nav-logo-container span{
         color: black !important;
+    }
+
+    #text-content-p{
+
+        margin-top: 10px !important;
+
     }
 
     .action-class{
@@ -965,6 +967,10 @@ span{
 
     /* Process */
 
+    .process-title{
+        margin: 0 auto;
+    }
+
     #image-container-steps{
         display: none;
     }
@@ -1014,6 +1020,12 @@ span{
     #demo-container{
         margin-top: 0;
         margin-left: 5%;
+    }
+
+    /* Footer */
+
+    footer{
+        display: none !important;
     }
 
     @media screen and (-webkit-min-device-pixel-ratio:0){  
